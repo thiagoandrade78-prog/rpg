@@ -1,0 +1,67 @@
+name: ARENA 5.0 stage 3 - Feras Espirituais
+on:
+  push:
+    branches:
+      - expansion/pc-stage-03-beasts
+    paths:
+      - .github/workflows/arena-expansion-stage3.yml
+permissions:
+  contents: write
+jobs:
+  verify-and-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: expansion/pc-stage-03-beasts
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve exact locally tested source snapshot
+        run: |
+          curl --fail --location --max-time 120 -o /tmp/arena-stage3.zip 'https://arena-filhos-da-areia.floot.app/_cdn/static/4ac3ceb5-b277-491e-acfd-30b58121f1a5-arena-pc-expansion-stage3-source.zip'
+          echo '39ff6a8b0bf8bebdff58e293ffaad0b6b59295aacf8ca5991cb91b603b73a291  /tmp/arena-stage3.zip' | sha256sum --check
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          root = Path('pc-expansion').resolve()
+          root.mkdir(exist_ok=True)
+          with zipfile.ZipFile('/tmp/arena-stage3.zip') as z:
+              for item in z.infolist():
+                  target = (root / item.filename).resolve()
+                  if not target.is_relative_to(root):
+                      raise ValueError('Invalid archive entry')
+              z.extractall(root)
+          PY
+      - name: Typecheck, build and all 193 logic regression tests
+        working-directory: pc-expansion
+        run: |
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npm run build
+          npm test
+      - name: Verify bit-identical portable HTML
+        working-directory: pc-expansion
+        run: |
+          echo '62e17955857338853f398823506764db61839ac8ea683705fc13a52a6d1edd74  dist/ARENA_FILHOS_DA_AREIA_PC.html' | sha256sum --check
+      - name: Save tested source checkpoint on stage 3 only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add pc-expansion
+          if ! git diff --cached --quiet; then
+            git commit -m 'ARENA 5.0 — Etapa 3: Feras Espirituais'
+            git push origin HEAD:expansion/pc-stage-03-beasts
+          fi
+      - name: Preserve build and verification reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-stage3-beasts-tested
+          retention-days: 14
+          path: |
+            pc-expansion/dist/ARENA_FILHOS_DA_AREIA_PC.html
+            pc-expansion/dist/*report.json
+            pc-expansion/docs/verification/stage3-browser-report.json
+            pc-expansion/docs/verification/stage2-browser-report.json
+            pc-expansion/LEIA-ME.txt
