@@ -1,0 +1,21 @@
+name: ARENA stage 1 portable toolchain
+on:
+  push:
+    branches: [expansion/pc-stage-01-awakening]
+    paths: [.github/workflows/arena-stage1-toolchain.yml]
+permissions:
+  contents: read
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Fetch exact pinned build binary
+        run: npm pack @esbuild/linux-x64@0.25.0
+      - name: Transfer build dependency
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-stage1-build-tool
+          path: esbuild-linux-x64-0.25.0.tgz
+          retention-days: 7
+          compression-level: 0
