@@ -1,0 +1,10 @@
+import {ArenaTypes as T} from './ArenaTypes';
+export class ArenaAudio{
+ context:AudioContext|null=null;enabled=false;private last=0;
+ async enable(value:boolean){this.enabled=value;if(!value){if(this.context?.state==='running')await this.context.suspend().catch(()=>{});return;}try{if(!this.context){const ctor=window.AudioContext||(window as unknown as {webkitAudioContext:typeof AudioContext}).webkitAudioContext;if(!ctor){this.enabled=false;return;}this.context=new ctor();}await this.context.resume();}catch{this.enabled=false;}}
+ play(event:T.Event){const c=this.context;if(!this.enabled||!c||c.state!=='running')return;const t=c.currentTime;if(t-this.last<.026)return;this.last=t;const oscillator=c.createOscillator(),gain=c.createGain();oscillator.connect(gain);gain.connect(c.destination);let start=160,end=45,duration=.12,volume=.10;
+ switch(event.type){case 'swing':start=210;end=65;duration=.10;volume=.028;oscillator.type='triangle';break;case 'block':start=880;end=430;duration=.09;volume=.055;oscillator.type='triangle';break;case 'parry':start=1350;end=660;duration=.19;volume=.065;oscillator.type='sine';break;case 'break':start=180;end=24;duration=.27;volume=.075;oscillator.type='sawtooth';break;case 'special':start=130;end=570;duration=.30;volume=.06;oscillator.type='triangle';break;case 'dodge':start=310;end=100;duration=.12;volume=.025;oscillator.type='sine';break;case 'win':start=440;end=880;duration=.5;volume=.065;oscillator.type='triangle';break;case 'lose':start=220;end=65;duration=.6;volume=.05;oscillator.type='triangle';break;default:oscillator.type='triangle';}
+ oscillator.frequency.setValueAtTime(start,t);oscillator.frequency.exponentialRampToValueAtTime(end,t+duration);gain.gain.setValueAtTime(.0001,t);gain.gain.exponentialRampToValueAtTime(volume*Math.min(1.2,event.power),t+.008);gain.gain.exponentialRampToValueAtTime(.0001,t+duration);oscillator.start(t);oscillator.stop(t+duration+.03);oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();};
+ }
+ dispose(){this.enabled=false;void this.context?.close().catch(()=>{});this.context=null;}
+}

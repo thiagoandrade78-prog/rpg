@@ -1,0 +1,61 @@
+{
+  "title": "ARENA — Filhos da Areia · O Despertar",
+  "sourceProject": "99acc7d3-ea06-4526-be68-86475e56cd5b",
+  "sourceVersion": 1789690036364,
+  "edition": "Illustrated 4.0 + Expansion 5.0 stage 1",
+  "expansionVersion": "5.0.0-alpha.1",
+  "expansionStage": 1,
+  "assets": [
+    {
+      "file": "a7c9cb85-cad4-4903-bf03-9dcf780ee7fb.png",
+      "bytes": 1528470,
+      "sha256": "823be2ab304513cfca32a2a7a9e5fbb85f05fae38b0c428b917c696286c384b2"
+    },
+    {
+      "file": "802c63f2-7caf-44c8-9166-7c540ce11958.png",
+      "bytes": 1492167,
+      "sha256": "430efac33be383870919e81914f086e78d6436941865eda399b2cc845638d6a0"
+    },
+    {
+      "file": "e2eda776-2e85-44ba-a900-2cbd8d71227c.png",
+      "bytes": 1489984,
+      "sha256": "5fedfc1638f31ec2f1d643b1257593662dcb57b83097c102309724deed053756"
+    },
+    {
+      "file": "96ba1505-ebc3-4540-b180-beb91e10a003.png",
+      "bytes": 1699501,
+      "sha256": "fa89a4516a9aab16769b0da2001ac95726f31822841e5c6c99dd99beb9907f47"
+    },
+    {
+      "file": "d9bfc547-530d-45bf-b40a-c06b509a5e9e.png",
+      "bytes": 1416628,
+      "sha256": "343a3a25f9d8ece480bd2277f549e89f770025e429868d50b85db5224c159cfd"
+    },
+    {
+      "file": "2aabd9ae-6795-426a-ba49-1050f185884c.png",
+      "bytes": 1518415,
+      "sha256": "7934f11a0fa26248248c9e84db4a2fe77d9f4bde4bc0dd6c5d1a58044bf388fd"
+    },
+    {
+      "file": "3d97d210-6ba0-408b-816a-0b37143f46e7.png",
+      "bytes": 1693390,
+      "sha256": "c759424c6ed6b207638307af81909718113ac3f0a904ca47bacf381367c9d761"
+    },
+    {
+      "file": "cfe53118-324d-4182-baf0-cac707da1950.png",
+      "bytes": 1607834,
+      "sha256": "6c3ec76a8f89da806b6d2a05828604c2759817962ca4189c2d9a0aa05eb4672a"
+    },
+    {
+      "file": "a47a8fa1-31e6-4783-94c8-6616173c090a.png",
+      "bytes": 1700534,
+      "sha256": "07e7e9fe20302ef8547d6dae9ca81bfa1d5999319f2505468903a36cbfb83b2d"
+    }
+  ],
+  "htmlBytes": 21596219,
+  "htmlSha256": "c4ac43669b93581ca37587cd4311a14365e7e9610d55db8de17e7c9c09f8bbf9",
+  "jsBytes": 19232799,
+  "cssBytes": 95141,
+  "networkRequired": false,
+  "fontsBundled": false
+}

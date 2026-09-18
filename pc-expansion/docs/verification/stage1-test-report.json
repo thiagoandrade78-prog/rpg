@@ -1,0 +1,142 @@
+{
+  "passed": 34,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Despertar revela o núcleo preexistente sem sorteio",
+      "passed": true
+    },
+    {
+      "name": "Despertar é idempotente mesmo com datas diferentes",
+      "passed": true
+    },
+    {
+      "name": "Despertar não modifica a referência de entrada",
+      "passed": true
+    },
+    {
+      "name": "Domínios do save preservados no despertar",
+      "passed": true
+    },
+    {
+      "name": "Ouro, XP e essência não são concedidos artificialmente",
+      "passed": true
+    },
+    {
+      "name": "Renomear e equipar não sorteiam outro núcleo",
+      "passed": true
+    },
+    {
+      "name": "Migração do mesmo v3 possui identidade determinística",
+      "passed": true
+    },
+    {
+      "name": "Gerador determinístico validado em 500 seeds",
+      "passed": true
+    },
+    {
+      "name": "Dois seeds distintos produzem identidades distintas",
+      "passed": true
+    },
+    {
+      "name": "Um núcleo adormecido não ganha estrelas pela validação",
+      "passed": true
+    },
+    {
+      "name": "Campos despertos antigos sem timestamp são reconciliados",
+      "passed": true
+    },
+    {
+      "name": "Qualidade e rank inconsistentes são corrigidos",
+      "passed": true
+    },
+    {
+      "name": "Doze meridianos únicos e refinamento só em canal aberto",
+      "passed": true
+    },
+    {
+      "name": "Canais potenciais abrem de um a sete meridianos no despertar",
+      "passed": true
+    },
+    {
+      "name": "Não fecha meridianos previamente válidos",
+      "passed": true
+    },
+    {
+      "name": "Relógio regressivo não regride lastActiveAt",
+      "passed": true
+    },
+    {
+      "name": "Despertar não regride timestamps e não acumula offline",
+      "passed": true
+    },
+    {
+      "name": "Persistência preserva updatedAt monotônico",
+      "passed": true
+    },
+    {
+      "name": "Checkpoint copia exatamente os bytes anteriores uma vez",
+      "passed": true
+    },
+    {
+      "name": "Quota cheia nunca substitui v5 válido por personagem novo",
+      "passed": true
+    },
+    {
+      "name": "Quota cheia mantém migração v3 em memória",
+      "passed": true
+    },
+    {
+      "name": "Leitura bloqueada retorna aviso, sem exceção no boot",
+      "passed": true
+    },
+    {
+      "name": "Save corrompido mantém bytes e recupera v3 válido",
+      "passed": true
+    },
+    {
+      "name": "Coleção vazia remove referência de assimilação fantasma",
+      "passed": true
+    },
+    {
+      "name": "Roundtrip ARENA5 preserva núcleo desperto",
+      "passed": true
+    },
+    {
+      "name": "JSON v5 exportado pode ser importado diretamente",
+      "passed": true
+    },
+    {
+      "name": "JSON e código v3 migram sem apagar personagem",
+      "passed": true
+    },
+    {
+      "name": "Backup excessivamente grande e código estrangeiro rejeitados",
+      "passed": true
+    },
+    {
+      "name": "Núcleo desperto preservado após recompensa da arena",
+      "passed": true
+    },
+    {
+      "name": "Despertar não altera dano, vida ou alcance de combate",
+      "passed": true
+    },
+    {
+      "name": "Roteiro de expansão tem 10 etapas com IDs únicos",
+      "passed": true
+    },
+    {
+      "name": "Engine, personagens, renderer, controles e nove ilustrações idênticos à base",
+      "passed": true
+    },
+    {
+      "name": "HTML não injeta scripts prototípicos desconectados",
+      "passed": true
+    },
+    {
+      "name": "Backup v5 sem personagem não pode substituir progresso",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+ARENA — FILHOS DA AREIA
+EXPANSÃO 5.0 / ETAPA 1 DE 10 / O DESPERTAR
+
+COMO JOGAR NO PC
+Abra ARENA_PC_EXPANSAO_01_DESPERTAR.html em Chrome ou Edge, como fez com o arquivo anterior. Não há instalador nem servidor. O arquivo contém a arte e todo o runtime.
+
+Antes de mudar de arquivo, no jogo anterior abra Ajuda e configurações > Proteja seu progresso > COPIAR CÓDIGO ou EXPORTAR. No novo jogo, cole ARENA5: ou ARENA3: no campo Código de recuperação e confirme a importação. Também pode colar o conteúdo completo de um JSON v3/v5 exportado. O salvamento não é sincronizado automaticamente entre arquivos/navegadores.
+
+NOVA ETAPA
+Entre no Ludus > Cultivo (ou Abrir Santuário Interior) > Despertar meu núcleo > Confirmar despertar. Sem custo de ouro ou essência.
+O mesmo núcleo será mantido quando mudar o nome, equipar o personagem, lutar, salvar e importar um backup. Use Núcleo, Meridianos e Jornada para examinar a ficha, os 12 canais e as dez entregas previstas.
+
+PRESERVADO
+Edição Ilustrada, nove artes originais, três arenas, 12 duelos, 26 equipamentos, cidades/loja/treino, combate e save v5.
+
+AINDA NÃO INCLUÍDO
+Meditação, cultivo offline, captura, PoketPets jogáveis, bônus espirituais e Avatares. São as próximas etapas; não estão representados por botões fictícios de ação nesta entrega.
+
+TECLADO
+A/D ou setas: movimentar; J: ataque leve/combo; K: pesado;
+L/Shift: escudo; espaço: esquivar; W/seta para cima: saltar;
+E: fúria cheia; Esc: pausar/continuar.
+
+FONTE
+No pacote de código-fonte: npm ci; npm run typecheck; npm run build; npm test.
+A saída do build está em dist/ARENA_FILHOS_DA_AREIA_PC.html.
+Consulte docs/EXPANSAO_10_ETAPAS.md e os relatórios de testes.
+
+A publicação Floot e o HTML anterior não foram substituídos.

@@ -1,0 +1,154 @@
+{
+  "passed": 37,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Movimento contínuo",
+      "passed": true
+    },
+    {
+      "name": "Golpe fora de alcance não causa dano",
+      "passed": true
+    },
+    {
+      "name": "Lâmina animada atinge hurtbox próxima",
+      "passed": true
+    },
+    {
+      "name": "Uma animação causa um único acerto",
+      "passed": true
+    },
+    {
+      "name": "Vigor insuficiente bloqueia ataque",
+      "passed": true
+    },
+    {
+      "name": "Recuperação de vigor",
+      "passed": true
+    },
+    {
+      "name": "Janela de aparo",
+      "passed": true
+    },
+    {
+      "name": "Bloqueio reduz dano e consome postura",
+      "passed": true
+    },
+    {
+      "name": "Golpe pesado quebra guarda",
+      "passed": true
+    },
+    {
+      "name": "Esquiva move e gera invulnerabilidade",
+      "passed": true
+    },
+    {
+      "name": "Salto possui altura e aterrissagem",
+      "passed": true
+    },
+    {
+      "name": "Pausa congela e limpa controles",
+      "passed": true
+    },
+    {
+      "name": "Fúria precisa da barra cheia",
+      "passed": true
+    },
+    {
+      "name": "Articulações da arma mudam no ataque",
+      "passed": true
+    },
+    {
+      "name": "Lança alcança mais que adaga",
+      "passed": true
+    },
+    {
+      "name": "Vitória produz um único resultado",
+      "passed": true
+    },
+    {
+      "name": "IA avança e não fica estática",
+      "passed": true
+    },
+    {
+      "name": "Equipamentos iniciais nos slots corretos",
+      "passed": true
+    },
+    {
+      "name": "Comprar sem equipar não acumula atributos",
+      "passed": true
+    },
+    {
+      "name": "Loja rejeita ouro insuficiente e categoria trancada",
+      "passed": true
+    },
+    {
+      "name": "Vitórias repetidas não avançam campanha",
+      "passed": true
+    },
+    {
+      "name": "Subir de nível preserva XP excedente",
+      "passed": true
+    },
+    {
+      "name": "ARENA3 preserva Unicode e equipamento",
+      "passed": true
+    },
+    {
+      "name": "Backups inválidos são rejeitados",
+      "passed": true
+    },
+    {
+      "name": "Treino não altera economia nem progresso",
+      "passed": true
+    },
+    {
+      "name": "Migração v3 para v5 preserva todo o personagem",
+      "passed": true
+    },
+    {
+      "name": "Núcleo determinístico e dentro dos limites",
+      "passed": true
+    },
+    {
+      "name": "Timestamps de fundação separados e imutáveis",
+      "passed": true
+    },
+    {
+      "name": "Validação defensiva de valores e referências",
+      "passed": true
+    },
+    {
+      "name": "Indivíduos e bestiário não duplicam IDs",
+      "passed": true
+    },
+    {
+      "name": "Assimilação rejeita feras alheias",
+      "passed": true
+    },
+    {
+      "name": "Save v5 compatível com ArenaEngine original",
+      "passed": true
+    },
+    {
+      "name": "Combate não apaga os novos modelos v5",
+      "passed": true
+    },
+    {
+      "name": "Migração local ocorre uma vez e preserva v3 original",
+      "passed": true
+    },
+    {
+      "name": "ARENA5 e ARENA3 importam corretamente",
+      "passed": true
+    },
+    {
+      "name": "Artes e conteúdo completos do Floot",
+      "passed": true
+    },
+    {
+      "name": "HTML independente sem módulos ou fontes externas",
+      "passed": true
+    }
+  ]
+}

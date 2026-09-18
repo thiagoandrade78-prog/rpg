@@ -1,0 +1,219 @@
+{
+  "mode": "actual HTML in about:blank, offline, localStorage test double (managed URL restriction)",
+  "browser": "Chromium headless",
+  "passed": 38,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Boot da expansão 5.0 etapa 1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capa original intacta",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cidade e nova entrada coexistem",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo inicialmente velado",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Gladiador real desenhado no santuário",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar exige confirmação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelar não desperta nem gasta recursos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar vincula permanentemente o mesmo núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Personagem e economia preservados no despertar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reino e estrela iniciais consistentes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Não existe botão de novo sorteio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ficha revela todos os componentes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Atlas contém os doze meridianos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Comandos da etapa 2 não foram falsamente habilitados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Roteiro in-game com dez entregas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Renomear preserva o núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Loja compra e equipa sem apagar cultivo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Treino marcial preserva núcleo desperto",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Mapa e três arenas seguem disponíveis",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup ARENA5 inclui a identidade desperta",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Importação reabre núcleo sem outro despertar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Combate original com seis ações",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Teclado causa dano no combate real",
+      "passed": true,
+      "detail": {
+        "before": 105,
+        "after": 49
+      }
+    },
+    {
+      "name": "Esc pausa o combate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pausa congela combate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sair do combate mantém núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reabertura mantém nome, arma e núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Checkpoint v5 anterior foi preservado",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout sem rolagem horizontal 1366x768",
+      "passed": true,
+      "detail": {
+        "body": 1366,
+        "w": 1366,
+        "content": []
+      }
+    },
+    {
+      "name": "Atlas legível 1366x768",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout sem rolagem horizontal 390x844",
+      "passed": true,
+      "detail": {
+        "body": 390,
+        "w": 390,
+        "content": []
+      }
+    },
+    {
+      "name": "Atlas legível 390x844",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout sem rolagem horizontal 844x390",
+      "passed": true,
+      "detail": {
+        "body": 844,
+        "w": 844,
+        "content": []
+      }
+    },
+    {
+      "name": "Atlas legível 844x390",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout sem rolagem horizontal 320x568",
+      "passed": true,
+      "detail": {
+        "body": 320,
+        "w": 320,
+        "content": []
+      }
+    },
+    {
+      "name": "Atlas legível 320x568",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem solicitações HTTP de jogo",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Sem erros JavaScript",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "networkRequests": []
+}
