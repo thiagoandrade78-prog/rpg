@@ -1,0 +1,25 @@
+name: ARENA PC portable export
+on:
+  push:
+    branches:
+      - exports/arena-pc-illustrated-20260918
+    paths:
+      - .github/workflows/arena-pc-export.yml
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download verified portable workspace
+        run: |
+          curl --fail --location --max-time 120 --output arena-pc-workspace.zip 'https://arena-filhos-da-areia.floot.app/_cdn/static/arena-pc-tested-workspace-20260918.zip'
+          echo '9b46e15818c57449ca7756a4ad2c72f7260e96f40681c9805bb372f8f37def6f  arena-pc-workspace.zip' | sha256sum --check
+      - name: Preserve portable build for delivery
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-pc-illustrated-verified
+          path: arena-pc-workspace.zip
+          compression-level: 0
+          retention-days: 7
