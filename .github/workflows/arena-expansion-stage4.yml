@@ -1,0 +1,65 @@
+name: ARENA 5.0 stage 4 - Terras Selvagens
+on:
+  push:
+    branches:
+      - expansion/pc-stage-04-wilds
+    paths:
+      - .github/workflows/arena-expansion-stage4.yml
+permissions:
+  contents: write
+jobs:
+  verify-and-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: expansion/pc-stage-04-wilds
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve the exact locally tested stage 4 source
+        run: |
+          curl --fail --location --max-time 120 -o /tmp/arena-stage4.zip 'https://arena-filhos-da-areia.floot.app/_cdn/static/a98dd802-798d-4528-8feb-3ba2217a466f-arena-pc-expansion-stage4-source.zip'
+          echo '78d2a8f698a0240604d873f33c78f1ec5b4b361ad6bdbf5f3bfb0c53d70a7b10  /tmp/arena-stage4.zip' | sha256sum --check
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          root = Path('pc-expansion').resolve()
+          root.mkdir(exist_ok=True)
+          with zipfile.ZipFile('/tmp/arena-stage4.zip') as z:
+              for item in z.infolist():
+                  if not (root / item.filename).resolve().is_relative_to(root):
+                      raise ValueError('Invalid archive entry')
+              z.extractall(root)
+          PY
+      - name: Typecheck, build and 283 logic regression tests
+        working-directory: pc-expansion
+        run: |
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npm run build
+          npm test
+      - name: Verify the delivered portable HTML is bit-identical
+        run: |
+          echo 'e0de6e6780faadafcb4c997babce160534af99c80318a7b50eeac579c87aeb08  pc-expansion/dist/ARENA_FILHOS_DA_AREIA_PC.html' | sha256sum --check
+      - name: Save tested stage 4 checkpoint without touching production
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add pc-expansion
+          if ! git diff --cached --quiet; then
+            git commit -m 'ARENA 5.0 — Etapa 4: Terras Selvagens'
+            git push origin HEAD:expansion/pc-stage-04-wilds
+          fi
+      - name: Preserve standalone HTML and verification reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-stage4-wilds-tested
+          retention-days: 14
+          path: |
+            pc-expansion/dist/ARENA_FILHOS_DA_AREIA_PC.html
+            pc-expansion/dist/*report.json
+            pc-expansion/docs/verification/stage4-browser-report.json
+            pc-expansion/docs/verification/stage4-validation.json
+            pc-expansion/LEIA-ME.txt
