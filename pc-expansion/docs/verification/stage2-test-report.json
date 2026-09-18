@@ -1,0 +1,242 @@
+{
+  "passed": 59,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Versão alpha.2 e etapa 2 identificadas",
+      "passed": true
+    },
+    {
+      "name": "Stage1 inicializa fluxo sem essência retroativa",
+      "passed": true
+    },
+    {
+      "name": "Inicialização idempotente preserva cursor",
+      "passed": true
+    },
+    {
+      "name": "Fluxo não altera núcleo ou meridianos",
+      "passed": true
+    },
+    {
+      "name": "Dormência nunca produz essência",
+      "passed": true
+    },
+    {
+      "name": "Taxa inicial sem canais é 12/min",
+      "passed": true
+    },
+    {
+      "name": "Um minuto passivo produz exatamente 12",
+      "passed": true
+    },
+    {
+      "name": "Tempo fracionário preservado entre ticks",
+      "passed": true
+    },
+    {
+      "name": "1000 ticks e uma sessão única são equivalentes",
+      "passed": true
+    },
+    {
+      "name": "Reabrir no mesmo instante não repete crédito",
+      "passed": true
+    },
+    {
+      "name": "Cursor retrocedido não dá crédito nem regride",
+      "passed": true
+    },
+    {
+      "name": "Relógio não finito não gera essência",
+      "passed": true
+    },
+    {
+      "name": "Limite de 12 horas offline",
+      "passed": true
+    },
+    {
+      "name": "Horas acima do limite não ficam para nova coleta",
+      "passed": true
+    },
+    {
+      "name": "Sessão dura exatamente 30s",
+      "passed": true
+    },
+    {
+      "name": "Clicar meditar duas vezes não empilha sessões",
+      "passed": true
+    },
+    {
+      "name": "Meditação tem taxa 6x e termina automaticamente",
+      "passed": true
+    },
+    {
+      "name": "Sessão terminada não finaliza nem premia de novo",
+      "passed": true
+    },
+    {
+      "name": "Fechar jogo não torna meditação infinita",
+      "passed": true
+    },
+    {
+      "name": "Limite longo usa taxa passiva se sessão já terminou",
+      "passed": true
+    },
+    {
+      "name": "Encerrar cedo mantém exatamente produção decorrida",
+      "passed": true
+    },
+    {
+      "name": "Encerrar sessão inexistente não concede nada",
+      "passed": true
+    },
+    {
+      "name": "Nova sessão após conclusão tem janela nova",
+      "passed": true
+    },
+    {
+      "name": "Meditação exige despertar",
+      "passed": true
+    },
+    {
+      "name": "Qualidade, reino, estrelas e canais aumentam taxa real",
+      "passed": true
+    },
+    {
+      "name": "Decomposição dos bônus confere com taxa",
+      "passed": true
+    },
+    {
+      "name": "Abrir custa essência e não ouro",
+      "passed": true
+    },
+    {
+      "name": "Refinar exige canal aberto",
+      "passed": true
+    },
+    {
+      "name": "Refinar tem custo próprio e não fecha canal",
+      "passed": true
+    },
+    {
+      "name": "Canal aberto não pode ser cobrado de novo",
+      "passed": true
+    },
+    {
+      "name": "Canal refinado não pode ser cobrado de novo",
+      "passed": true
+    },
+    {
+      "name": "IDs de meridiano inválidos são rejeitados",
+      "passed": true
+    },
+    {
+      "name": "Recursos insuficientes não alteram objeto",
+      "passed": true
+    },
+    {
+      "name": "Mudança de taxa só afeta tempo futuro",
+      "passed": true
+    },
+    {
+      "name": "Subir estrela desconta custo e mantém reino",
+      "passed": true
+    },
+    {
+      "name": "Cotação antiga impede cobrança de estrela diferente",
+      "passed": true
+    },
+    {
+      "name": "Custo das estrelas cresce progressivamente",
+      "passed": true
+    },
+    {
+      "name": "Romper reino exige requisitos de meridianos",
+      "passed": true
+    },
+    {
+      "name": "Ruptura elegível garantida e estrela volta a 1",
+      "passed": true
+    },
+    {
+      "name": "Reinos superiores exigem refinamento",
+      "passed": true
+    },
+    {
+      "name": "Todas as 35 posições de cultivo são alcançáveis",
+      "passed": true
+    },
+    {
+      "name": "Limite transcendente nunca cobra essência",
+      "passed": true
+    },
+    {
+      "name": "Reserva máxima não estoura ou fica negativa",
+      "passed": true
+    },
+    {
+      "name": "Limite bloqueia meditação desnecessária",
+      "passed": true
+    },
+    {
+      "name": "Total cultivado não diminui quando há investimento",
+      "passed": true
+    },
+    {
+      "name": "Transições funcionam com entrada congelada",
+      "passed": true
+    },
+    {
+      "name": "Caminhos do save martial e feras são preservados",
+      "passed": true
+    },
+    {
+      "name": "Avanço espiritual não muda a ficha de combate",
+      "passed": true
+    },
+    {
+      "name": "ARENA5 mantém sessão e frações no roundtrip",
+      "passed": true
+    },
+    {
+      "name": "Backup de sessão completa offline corretamente",
+      "passed": true
+    },
+    {
+      "name": "Flow malformado é sanitizado",
+      "passed": true
+    },
+    {
+      "name": "Cursor não pode preceder ativação do fluxo",
+      "passed": true
+    },
+    {
+      "name": "Sessão encerrada não ressuscita ao importar",
+      "passed": true
+    },
+    {
+      "name": "Stage2 preserva backup byte a byte uma única vez",
+      "passed": true
+    },
+    {
+      "name": "Relógio regressivo também bloqueia comandos pagos",
+      "passed": true
+    },
+    {
+      "name": "Settle total sobe timestamps monotonamente",
+      "passed": true
+    },
+    {
+      "name": "Todos os canais e refinamentos têm custo distinto positivo",
+      "passed": true
+    },
+    {
+      "name": "Código da nova UI chama o domínio em vez de mutar essência",
+      "passed": true
+    },
+    {
+      "name": "Build autocontida inclui fluxo e não depende da rede",
+      "passed": true
+    }
+  ]
+}

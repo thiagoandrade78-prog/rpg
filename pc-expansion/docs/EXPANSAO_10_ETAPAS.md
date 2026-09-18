@@ -53,3 +53,9 @@ O arquivo não acessa o save de outra origem/navegador automaticamente. Exporte 
 Testes de browser opcionais: Python + Playwright + Chromium, `python tests/browser_stage1.py`. O teste tenta file:// e documenta fallback quando o navegador gerenciado proíbe essa navegação. No ambiente desta entrega foi usado o HTML real em about:blank, rede bloqueada e localStorage de teste. Isso não equivale a um teste em um iPhone físico.
 
 O runtime final não usa servidores, CDN, bibliotecas remotas nem fontes externas. A ferramenta de build usa as dependências fixadas no lockfile. Não se embutem arquivos de fontes.
+
+
+## Checkpoint da Etapa 2
+O Fluxo Interior implementado. Detalhes: ETAPA_02_FLUXO_INTERIOR.md.
+Meditação, meridianos, estrelas, rupturas e offline estão ativos.
+Etapas 3–10 continuam planejadas, não concluídas.

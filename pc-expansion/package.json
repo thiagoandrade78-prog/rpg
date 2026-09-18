@@ -1,13 +1,13 @@
 {
   "name": "arena-filhos-da-areia-pc",
-  "version": "5.0.0-alpha.1",
+  "version": "5.0.0-alpha.2",
   "private": true,
-  "description": "Original illustrated ARENA for PC: expansion stage 1, The Awakening",
+  "description": "Illustrated ARENA for PC: stage 2, cultivation flow",
   "scripts": {
     "build": "node scripts/build.cjs",
-    "test": "node tests/logic.cjs && node tests/expansion-stage1.cjs",
+    "test": "node tests/logic.cjs && node tests/expansion-stage1.cjs && node tests/expansion-stage2.cjs",
     "typecheck": "tsc --noEmit",
-    "test:browser": "python tests/browser_stage1.py"
+    "test:browser": "python tests/browser_stage2.py"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.2.3",

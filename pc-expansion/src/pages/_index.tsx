@@ -6,6 +6,7 @@ import {ArenaPortrait} from '../components/ArenaPortrait';
 import {ArenaCultivation} from '../components/ArenaCultivation';
 import {ArenaExpansion} from '../helpers/ArenaExpansion';
 import {CultivationEngine} from '../helpers/CultivationEngine';
+import {CultivationFlow, CultivationCommand, FlowReceipt} from '../helpers/CultivationFlow';
 import {ArenaBattle} from '../components/ArenaBattle';
 import {ArenaItemIcon} from '../components/ArenaItemIcon';
 import {ArenaSigil} from '../components/ArenaSigil';
@@ -22,17 +23,39 @@ const slotNames:Record<T.Slot,string>={weapon:'Armas',helmet:'Elmos',armor:'Arma
 const statNames={power:'Força',vitality:'Vitalidade',endurance:'Resistência',agility:'Agilidade'};
 const stylesAI:Record<T.Style,string>={balanced:'Equilibrado',aggressive:'Agressivo',guardian:'Defensivo',duelist:'Duelista',brute:'Brutamontes',lancer:'Lanceiro'};
 export default function Index(){
- const [initial]=useState(()=>ArenaSaveV5.load());
+ const [initial]=useState(()=>{
+  const loaded=ArenaSaveV5.load();const result=ArenaExpansion.settle(loaded.save);
+  try{return {...loaded,save:ArenaSaveV5.persist(result.save),receipt:result.receipt};}
+  catch{return {...loaded,save:result.save,receipt:result.receipt,warning:'Armazenamento indisponível. Mantenha esta aba aberta e exporte um backup.'};}
+ });
  const initialLegacy=ArenaCharacterAdapter.toLegacy(initial.save);
  const [save,setSave]=useState<T.Save>(initialLegacy);const v5Ref=useRef(initial.save);
  const [cultivation,setCultivation]=useState(initial.save.cultivation);
+ const [offlineReport,setOfflineReport]=useState<FlowReceipt|null>(initial.receipt.elapsedMs>=60000?initial.receipt:null);
+ const [clockWarning,setClockWarning]=useState(initial.receipt.clockBackwards);
+ const latestSave=useRef(save);latestSave.current=save;
+ const lastFlush=useRef(0),syncBlocked=useRef(false);
  const [screen,setScreen]=useState<Screen>('home'),[notice,setNotice]=useState(initial.warning),[storageWarning,setStorageWarning]=useState('');
  const [slot,setSlot]=useState<T.Slot>('weapon'),[selected,setSelected]=useState(Math.min(11,initialLegacy.cleared.length)),[backup,setBackup]=useState('');
  const [battle,setBattle]=useState<{save:T.Save;id:number;practice:boolean;key:number}|null>(null),[reward,setReward]=useState<RewardView|null>(null);
  const [confirmImport,setConfirmImport]=useState(false);
  const next=D.encounters.find(e=>!save.cleared.includes(e.id))||D.encounters[11];
  const arena=Math.min(2,Math.floor(save.cleared.length/4));const stats=D.stats(save);
- useEffect(()=>{try{const merged=ArenaCharacterAdapter.mergeLegacy(v5Ref.current,save);v5Ref.current=merged;v5Ref.current=ArenaSaveV5.persist(merged);localStorage.setItem('arena-save-v3',JSON.stringify(save));setStorageWarning('');}catch{setStorageWarning('Salvamento local indisponível. Use Exportar backup antes de sair.');}},[save]);
+ useEffect(()=>{if(syncBlocked.current)return;try{const merged=ArenaCharacterAdapter.mergeLegacy(v5Ref.current,save);v5Ref.current=merged;v5Ref.current=ArenaSaveV5.persist(merged);localStorage.setItem('arena-save-v3',JSON.stringify(save));setStorageWarning('');}catch{setStorageWarning('Salvamento local indisponível. Use Exportar backup antes de sair.');}},[save]);
+ useEffect(()=>{
+  const tick=()=>{if(!document.hidden&&!syncBlocked.current)settleFlow(false);};
+  const visibility=()=>{if(document.hidden)settleFlow(true);else settleFlow(true,true);};
+  const closing=()=>settleFlow(true);
+  const changed=(event:StorageEvent)=>{
+   if(event.key===ArenaSaveV5.KEY&&event.newValue){
+    syncBlocked.current=true;
+    setStorageWarning('Outra aba alterou este salvamento. Esta sessão parou de gravar para não sobrescrevê-la. Exporte seu backup e reabra apenas uma aba do jogo.');
+   }
+  };
+  const timer=window.setInterval(tick,1000);
+  document.addEventListener('visibilitychange',visibility);window.addEventListener('pagehide',closing);window.addEventListener('storage',changed);
+  return()=>{clearInterval(timer);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',closing);window.removeEventListener('storage',changed);};
+ },[]);
  useEffect(()=>{if(!notice)return;const timer=window.setTimeout(()=>setNotice(''),6500);return()=>clearTimeout(timer);},[notice]);
  function go(s:Screen){setScreen(s);setConfirmImport(false);}
  function fight(id:number,practice=false){if(!practice&&id>0&&!save.cleared.includes(id-1)){setNotice('Vença o duelo anterior para liberar este adversário.');return;}setBattle({save:D.clone(save),id,practice,key:Date.now()});}
@@ -41,8 +64,33 @@ export default function Index(){
  function equip(id:string){setSave(D.equip(save,id));setNotice(`${D.getItem(id).name} equipado.`);}
  function improve(key:keyof T.Save['stats']){if(save.points<1||save.stats[key]>=30)return;const s=D.clone(save);s.points--;s.stats[key]++;setSave(s);}
  function talent(key:keyof T.Save['talents']){if(save.points<2||save.talents[key]>=3)return;const s=D.clone(save);s.points-=2;s.talents[key]++;setSave(s);}
- function currentV5(){const merged=ArenaCharacterAdapter.mergeLegacy(v5Ref.current,save);v5Ref.current=merged;return merged;}
+ function commitCultivation(root:typeof initial.save,force=true){
+  v5Ref.current=root;setCultivation(root.cultivation);
+  if(syncBlocked.current)return;
+  if(force||Date.now()-lastFlush.current>=5000){
+   try{v5Ref.current=ArenaSaveV5.persist(root);lastFlush.current=Date.now();setStorageWarning('');}
+   catch{setStorageWarning('Progresso mantido nesta sessão. O armazenamento falhou; exporte um backup antes de sair.');}
+  }
+ }
+ function settleFlow(force=false,report=false){
+  if(syncBlocked.current){const merged=ArenaCharacterAdapter.mergeLegacy(v5Ref.current,latestSave.current);v5Ref.current=merged;return merged;}
+  const base=ArenaCharacterAdapter.mergeLegacy(v5Ref.current,latestSave.current);
+  const result=ArenaExpansion.settle(base);
+  setClockWarning(result.receipt.clockBackwards);
+  if(report&&result.receipt.elapsedMs>=60000)setOfflineReport(result.receipt);
+  if(result.receipt.sessionFinished)setNotice('Meditação concluída. A essência foi adicionada à reserva; o fluxo passivo continua.');
+  commitCultivation(result.save,force||result.receipt.sessionFinished);
+  return result.save;
+ }
+ function currentV5(){return settleFlow(true);}
+ function cultivate(action:CultivationCommand){
+  if(syncBlocked.current){setNotice('Reabra o jogo em uma única aba antes de continuar.');return;}
+  const root=settleFlow(true);
+  try{const result=ArenaExpansion.command(root,action);commitCultivation(result.save);setNotice(result.message||'Cultivo atualizado.');}
+  catch(error){setNotice(error instanceof Error?error.message:'Não foi possível concluir o cultivo.');}
+ }
  function awakenCore(){
+  if(syncBlocked.current)return;
   const previous=currentV5(),next=ArenaExpansion.awaken(previous);
   if(next===previous)return;
   v5Ref.current=next;setCultivation(next.cultivation);
@@ -51,16 +99,16 @@ export default function Index(){
  }
  function exportSave(){const root=currentV5(),code=ArenaSaveV5.encode(root);setBackup(code);const blob=new Blob([JSON.stringify(root,null,2)],{type:'application/json'});const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='arena-save-v5.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);setNotice('Backup v5 exportado. O código também está disponível abaixo.');}
  async function copySave(){const code=ArenaSaveV5.encode(currentV5());setBackup(code);try{await navigator.clipboard.writeText(code);setNotice('Código ARENA5 de recuperação copiado.');}catch{setNotice('Selecione e copie o código no campo abaixo.');}}
- function importSave(){try{const data=ArenaSaveV5.decode(backup);v5Ref.current=ArenaSaveV5.persist(data);setCultivation(data.cultivation);setSave(ArenaCharacterAdapter.toLegacy(data));setConfirmImport(false);setNotice(data.meta.migratedFromVersion===3?'Backup ARENA3 migrado e recuperado no Save v5.':'Gladiador v5 recuperado com sucesso.');go('camp');}catch(e){setNotice(e instanceof Error?e.message:'Código de recuperação inválido.');}}
+ function importSave(){try{const decoded=ArenaSaveV5.decode(backup),resumed=ArenaExpansion.settle(decoded),data=resumed.save;v5Ref.current=ArenaSaveV5.persist(data);syncBlocked.current=false;setOfflineReport(resumed.receipt.elapsedMs>=60000?resumed.receipt:null);setClockWarning(resumed.receipt.clockBackwards);setCultivation(data.cultivation);latestSave.current=ArenaCharacterAdapter.toLegacy(data);setSave(latestSave.current);setConfirmImport(false);setNotice(data.meta.migratedFromVersion===3?'Backup ARENA3 migrado e recuperado no Save v5.':'Gladiador v5 recuperado com sucesso.');go('camp');}catch(e){setNotice(e instanceof Error?e.message:'Código de recuperação inválido.');}}
  const back=(title:string,subtitle?:string)=><div className={styles.pageHeading}><Button variant="ghost" className={styles.back} onClick={()=>go('camp')} aria-label="Voltar ao ludus"><ArrowLeft size={20}/></Button><div>{subtitle&&<span>{subtitle}</span>}<h1>{title}</h1></div></div>;
  const nav=[{id:'camp' as const,label:'Ludus',Icon:Home},{id:'map' as const,label:'Arenas',Icon:Map},{id:'gear' as const,label:'Equipar',Icon:Shield},{id:'shop' as const,label:'Ferreiro',Icon:ShoppingBag},{id:'train' as const,label:'Treinar',Icon:Flame},{id:'cultivation' as const,label:'Cultivo',Icon:Compass}];
- return <main className={styles.app} data-version={ArenaExpansion.version} data-expansion-stage="1" data-screen={screen}>
- <Helmet><title>ARENA — Filhos da Areia · O Despertar 5.0</title><meta name="description" content="Jogo ilustrado para PC. Expansão 5.0, etapa 1: O Despertar do Núcleo."/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="theme-color" content="#362318"/></Helmet>
+ return <main className={styles.app} data-version={ArenaExpansion.version} data-expansion-stage="2" data-screen={screen}>
+ <Helmet><title>ARENA — Filhos da Areia · O Fluxo Interior 5.0</title><meta name="description" content="Jogo ilustrado para PC. Expansão 5.0, etapa 2: meditação, meridianos, reinos e cultivo offline."/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="theme-color" content="#362318"/></Helmet>
  {battle?<ArenaBattle key={battle.key} save={battle.save} encounterId={battle.id} practice={battle.practice} onFinish={finish} onExit={()=>{setBattle(null);go('camp');}} onSound={value=>setSave(s=>({...s,sound:value}))}/>:
  <>
  {screen==='home'?<section className={styles.home}>
- <div className={styles.homeArt}><img src={Art.cover} alt="Dois campeões ilustrados diante do coliseu" fetchPriority="high"/><div className={styles.artShade}/><span className={styles.edition}>EXPANSÃO 5.0 · ETAPA 1/10</span><div className={styles.homeMotes} aria-hidden="true"/></div>
- <div className={styles.homeIntro}><div className={styles.flourish}><span/><Swords size={22}/><span/></div><p className={styles.eyebrow}>UMA NOVA LENDA AGUARDA</p><h1>ARENA</h1><h2>FILHOS DA AREIA</h2><p className={styles.homeLead}>A mesma arena. Uma nova essência.<br/>Desperte o poder que já vive em você.</p>
+ <div className={styles.homeArt}><img src={Art.cover} alt="Dois campeões ilustrados diante do coliseu" fetchPriority="high"/><div className={styles.artShade}/><span className={styles.edition}>EXPANSÃO 5.0 · ETAPA 2/10</span><div className={styles.homeMotes} aria-hidden="true"/></div>
+ <div className={styles.homeIntro}><div className={styles.flourish}><span/><Swords size={22}/><span/></div><p className={styles.eyebrow}>UMA NOVA LENDA AGUARDA</p><h1>ARENA</h1><h2>FILHOS DA AREIA</h2><p className={styles.homeLead}>A mesma arena. Uma nova essência.<br/>Cultive a força que já vive em você.</p>
  <Button className={styles.goldButton} onClick={()=>{go('camp');setSelected(next.id);}}><Swords size={19}/>{save.wins?'CONTINUAR JORNADA':'ENTRAR NO LUDUS'}<ArrowRight size={18}/></Button>
  <div className={styles.homeSecondary}><Button variant="outline" onClick={()=>fight(0,true)}><Play size={16}/> LUTA RÁPIDA</Button><Button variant="ghost" onClick={()=>go('create')}><User size={16}/> PERSONALIZAR</Button></div>
  <Button variant="ghost" className={styles.homeHelp} onClick={()=>go('help')}><BookOpen size={14}/> Controles, arquivo local e backup</Button>
@@ -68,10 +116,10 @@ export default function Index(){
  </section>:<>
  <header className={styles.top}><Button variant="ghost" className={styles.wordmark} onClick={()=>go('home')} aria-label="Tela inicial"><ArenaSigil size={46}/></Button><div className={styles.playerMeta}><strong>{save.name}</strong><small>NÍVEL {save.level} <span>·</span> {save.xp}/{save.level*90} XP</small><i className={styles.miniXp}><i style={{width:`${Math.min(100,save.xp/(save.level*90)*100)}%`}}/></i></div><div className={styles.gold}><Coins size={19}/>{save.gold.toLocaleString('pt-BR')}</div><Button variant="ghost" className={styles.settings} onClick={()=>go('help')} aria-label="Ajuda e configurações"><Settings size={19}/></Button></header>
  <div className={styles.content} key={screen}>
- {screen==='cultivation'&&<ArenaCultivation save={save} model={cultivation} onAwaken={awakenCore} onBack={()=>go('camp')} onBackup={()=>go('help')} storageWarning={storageWarning}/>}
+ {screen==='cultivation'&&<ArenaCultivation save={save} model={cultivation} onAwaken={awakenCore} onBack={()=>go('camp')} onBackup={()=>go('help')} storageWarning={storageWarning} onCommand={cultivate} offlineReport={offlineReport} onDismissReport={()=>setOfflineReport(null)} clockWarning={clockWarning}/>}
  {screen==='camp'&&<section className={styles.camp}>
  <div className={styles.townMap}><img src={Art.town} alt="Velaria: coliseu, ferreiro, arsenal e pátio de treinamento"/><div className={styles.townTitle}><span>SEJA BEM-VINDO A</span><h2>Velaria</h2></div><Button className={`${styles.location} ${styles.locationArena}`} onClick={()=>go('map')}><Crown size={20}/><span>ARENAS</span></Button><Button className={`${styles.location} ${styles.locationForge}`} onClick={()=>go('shop')}><ShoppingBag size={18}/><span>FORJA</span></Button><Button className={`${styles.location} ${styles.locationGear}`} onClick={()=>go('gear')}><Shield size={18}/><span>ARSENAL</span></Button><Button className={`${styles.location} ${styles.locationTrain}`} onClick={()=>go('train')}><Target size={18}/><span>PÁTIO</span></Button><div className={styles.townHint}>Clique nos lugares para explorar</div></div>
- <Button className={styles.cultivationBanner} onClick={()=>go('cultivation')} aria-label="Abrir Santuário Interior"><span className={styles.cultivationBadge}><Compass size={30}/></span><span><small>EXPANSÃO 5.0 · O DESPERTAR</small><b>{CultivationEngine.isAwakened(cultivation)?cultivation.core.name:'Seu núcleo está pronto para despertar.'}</b><em>{CultivationEngine.isAwakened(cultivation)?`${cultivation.realm} ${'★'.repeat(cultivation.star)} · ${cultivation.core.nature} / ${cultivation.core.archetype}`:'Visite o Santuário Interior. Seu progresso marcial será preservado.'}</em></span><ChevronRight size={24}/></Button>
+ <Button className={styles.cultivationBanner} onClick={()=>go('cultivation')} aria-label="Abrir Santuário Interior"><span className={styles.cultivationBadge}><Compass size={30}/></span><span><small>EXPANSÃO 5.0 · O FLUXO INTERIOR</small><b>{CultivationEngine.isAwakened(cultivation)?cultivation.core.name:'Seu núcleo está pronto para despertar.'}</b><em>{CultivationEngine.isAwakened(cultivation)?`${cultivation.realm} ${'★'.repeat(cultivation.star)} · ${cultivation.essence.toLocaleString('pt-BR')} essência · ${CultivationFlow.rate(cultivation).toFixed(1)} por minuto`:'Visite o Santuário Interior. Seu progresso marcial será preservado.'}</em></span><ChevronRight size={24}/></Button>
  <div className={styles.campHero}><div className={styles.campArt}><ArenaPortrait save={save} arena={arena}/></div><div className={styles.campText}><span className={styles.eyebrow}>SEU LUDUS</span><h1>{save.cleared.length===12?'O invicto.':'Da areia à glória.'}</h1><p>{save.cleared.length===12?'As três coroas são suas. Revisite as arenas e domine outras armas.':'Equipe seu gladiador. Leia o rival. Faça cada golpe contar.'}</p><div className={styles.medals}><span><Award size={16}/>{save.wins} vitórias</span><span><Crown size={16}/>{save.cleared.filter(id=>D.encounters[id].boss).length}/3 coroas</span></div><Button variant="outline" className={styles.customize} onClick={()=>go('create')}>PERSONALIZAR <ChevronRight size={14}/></Button></div></div>
  <div className={styles.nextFight}><div><span className={styles.eyebrow}>{save.cleared.length===12?'REVISITAR O CAMPEÃO':'PRÓXIMO DESAFIO'}</span><h2>{next.name}<small>{next.epithet}</small></h2><p>{D.arenas[next.arena].name}</p></div><Button className={styles.goldButton} onClick={()=>fight(next.id)}><Swords size={20}/> LUTAR</Button></div>
  <div className={styles.campStats}>{[{Icon:Heart,name:'VIDA',value:stats.hp},{Icon:Swords,name:'ATAQUE',value:stats.power},{Icon:Shield,name:'DEFESA',value:stats.defense},{Icon:Zap,name:'VIGOR',value:stats.stamina}].map(({Icon,name,value})=><div key={name}><Icon size={17}/><strong>{value}</strong><span>{name}</span></div>)}</div>
@@ -106,7 +154,7 @@ export default function Index(){
  <article className={styles.helpCard}><h2><Download size={22}/> Edição local para PC</h2><p>Abra <b>ARENA_FILHOS_DA_AREIA_PC.html</b> em um navegador atualizado. O jogo, os cenários e as bibliotecas estão incorporados neste arquivo; não é necessário servidor, instalação ou conta.</p><p>O progresso é salvo neste navegador quando o armazenamento local está disponível. O arquivo não busca automaticamente o progresso do endereço publicado. Importe um código ARENA5: ou ARENA3: para transferir seu gladiador.</p><p>Mantenha o arquivo na mesma pasta e exporte seu backup antes de renomeá-lo, movê-lo ou apagar dados do navegador. No PC, use preferencialmente Chrome, Edge ou Firefox.</p><p>A edição exporta o conteúdo jogável existente no Floot: campanha das três coroas e apresentação ilustrada. A fundação de cultivo 5.0 está no save; captura e transformações de PoketPets ainda não fazem parte deste projeto.</p></article>
  <article className={styles.helpCard}><h2><Settings size={22}/> Preferências</h2><Button variant="outline" className={styles.preference} onClick={()=>setSave(s=>({...s,sound:!s.sound}))}>{save.sound?<Volume2 size={18}/>:<VolumeX size={18}/>}Som {save.sound?'ligado':'desligado'}<span>Alterar</span></Button><Button variant="outline" className={styles.preference} onClick={()=>setSave(s=>({...s,reducedMotion:!s.reducedMotion}))}>Efeitos reduzidos: {save.reducedMotion?'sim':'não'}<span>Alterar</span></Button><p>O som só começa após interação no combate. Efeitos reduzidos retiram tremor de câmera, trilhas e parte das animações de fundo.</p></article>
  <article className={styles.helpCard}><h2><BookOpen size={22}/> Proteja seu progresso</h2><p>O núcleo desperto faz parte do <b>Save v5</b>. A atualização cria uma cópia local única chamada <b>arena-save-v5-before-stage-1</b>, quando há um v5 anterior. Não existe sincronização automática entre arquivos ou navegadores.</p><p>Exporte antes de apagar dados do navegador, trocar de aparelho ou mover o HTML. Importar substitui o gladiador atual pelo backup.</p><div className={styles.backupActions}><Button variant="outline" onClick={exportSave}><Download size={16}/> EXPORTAR</Button><Button variant="outline" onClick={copySave}><Copy size={16}/> COPIAR CÓDIGO</Button></div><label className={styles.field}>Código de recuperação<Input value={backup} onChange={e=>{setBackup(e.target.value);setConfirmImport(false);}} placeholder="ARENA5:… / ARENA3:… / JSON v5" aria-label="Código de recuperação"/></label>{confirmImport?<div className={styles.confirmImport}><p>Substituir o progresso atual por este backup?</p><Button onClick={importSave}>CONFIRMAR IMPORTAÇÃO</Button><Button variant="ghost" onClick={()=>setConfirmImport(false)}>Cancelar</Button></div>:<Button variant="outline" disabled={!backup.trim()} onClick={()=>{try{ArenaSaveV5.decode(backup);setConfirmImport(true);}catch{setNotice('Código inválido. Cole um backup completo ARENA5: ou ARENA3:.');}}}>IMPORTAR CÓDIGO</Button>}{storageWarning&&<p className={styles.storageWarning}>{storageWarning}</p>}</article>
- </div><div className={styles.buildInfo}>ARENA · FILHOS DA AREIA · v{D.version} · EDIÇÃO PC<br/>Edição Ilustrada: cenários pintados e gladiadores articulados.<br/>Expansão 5.0 · Etapa 1/10: O Despertar.<br/>Save v5 com migração automática de ARENA3.<br/>Meditação, feras, poderes e transformações são etapas futuras.<br/>Cópia portátil do projeto Floot; o domínio publicado não foi alterado.</div></section>}
+ </div><div className={styles.buildInfo}>ARENA · FILHOS DA AREIA · v{D.version} · EDIÇÃO PC<br/>Edição Ilustrada: cenários pintados e gladiadores articulados.<br/>Expansão 5.0 · Etapa 2/10: O Despertar.<br/>Save v5 com migração automática de ARENA3.<br/>Meditação, feras, poderes e transformações são etapas futuras.<br/>Cópia portátil do projeto Floot; o domínio publicado não foi alterado.</div></section>}
  </div>
  {!['reward','create'].includes(screen)&&<nav className={styles.bottomNav} aria-label="Navegação principal">{nav.map(({id,label,Icon})=><Button variant="ghost" key={id} className={screen===id?styles.navActive:''} onClick={()=>go(id)}><Icon size={20}/><span>{label}</span>{id==='train'&&save.points>0&&<i/>}</Button>)}</nav>}
  </>}

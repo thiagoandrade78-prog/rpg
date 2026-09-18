@@ -54,7 +54,17 @@ export class CultivationEngine {
   let awakenedAt=c.awakenedAt===null||c.awakenedAt===undefined?null:integer(c.awakenedAt,createdAt,Number.MAX_SAFE_INTEGER,createdAt);
   if(realm!=='dormant'&&awakenedAt===null)awakenedAt=createdAt;
   if(awakenedAt!==null&&realm==='dormant')realm='Desperto';
-  return {core:{id:typeof c.id==='string'&&c.id?c.id.slice(0,120):base.core.id,name:typeof c.name==='string'&&c.name?c.name.slice(0,80):`Núcleo ${aspect} de ${nature}`,nature,archetype,aspect,quality,qualityRank:QUALITIES.indexOf(quality)+1,innate:typeof c.innate==='string'&&c.innate?c.innate.slice(0,80):base.core.innate,channels:integer(c.channels,1,12,base.core.channels),seed:typeof c.seed==='string'&&c.seed?c.seed.slice(0,240):seed,awakenedAt},realm,star:realm==='dormant'?0:integer(v.star,1,5,1),essence:integer(v.essence,0,999999999,0),meridians,totalCultivated:integer(v.totalCultivated,0,999999999,0),timestamps:{createdAt,lastActiveAt,lastCultivatedAt,offlineAccrualCursor}};
+  const rawFlow=v.flow&&typeof v.flow==='object'?v.flow:undefined;
+  let flow:T.Flow|undefined;
+  if(rawFlow?.version===2){
+   const enabledAt=integer(rawFlow.enabledAt,createdAt,Number.MAX_SAFE_INTEGER,lastActiveAt);
+   const rawSession=rawFlow.meditation&&typeof rawFlow.meditation==='object'?rawFlow.meditation:null;
+   const startedAt=rawSession?integer(rawSession.startedAt,enabledAt,Number.MAX_SAFE_INTEGER,enabledAt):0;
+   const endsAt=rawSession?integer(rawSession.endsAt,startedAt,Math.min(Number.MAX_SAFE_INTEGER,startedAt+30000),startedAt):0;
+   const meditation=rawSession&&endsAt>startedAt&&realm!=='dormant'?{startedAt,endsAt}:null;
+   flow={version:2,enabledAt,fraction:typeof rawFlow.fraction==='number'&&Number.isFinite(rawFlow.fraction)?Math.max(0,Math.min(.999999999,rawFlow.fraction)):0,meditation,sessionsCompleted:integer(rawFlow.sessionsCompleted,0,999999999,0)};
+  }
+  return {...(flow?{flow}:{}),core:{id:typeof c.id==='string'&&c.id?c.id.slice(0,120):base.core.id,name:typeof c.name==='string'&&c.name?c.name.slice(0,80):`Núcleo ${aspect} de ${nature}`,nature,archetype,aspect,quality,qualityRank:QUALITIES.indexOf(quality)+1,innate:typeof c.innate==='string'&&c.innate?c.innate.slice(0,80):base.core.innate,channels:integer(c.channels,1,12,base.core.channels),seed:typeof c.seed==='string'&&c.seed?c.seed.slice(0,240):seed,awakenedAt},realm,star:realm==='dormant'?0:integer(v.star,1,5,1),essence:integer(v.essence,0,999999999,0),meridians,totalCultivated:integer(v.totalCultivated,0,999999999,0),timestamps:{createdAt,lastActiveAt,lastCultivatedAt,offlineAccrualCursor:Math.max(offlineAccrualCursor,flow?.enabledAt||0,awakenedAt||0)}};
  }
  static touch(model:T.Model,now=Date.now()):T.Model {return {...model,timestamps:{...model.timestamps,lastActiveAt:Math.max(model.timestamps.createdAt,model.timestamps.lastActiveAt,integer(now,0,Number.MAX_SAFE_INTEGER,model.timestamps.lastActiveAt))}};}
 }

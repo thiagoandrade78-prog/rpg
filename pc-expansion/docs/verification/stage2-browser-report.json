@@ -1,0 +1,245 @@
+{
+  "mode": "HTML real em about:blank; rede bloqueada; localStorage e Date.now controlados para testes. file:// bloqueado pelo ambiente.",
+  "passed": 46,
+  "failed": 0,
+  "errors": [],
+  "externalRequests": [],
+  "tests": [
+    {
+      "name": "Boot da etapa 2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capa ilustrada original carregada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cidade e atalhos preservados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Dormência bloqueia meditação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar mantém personagem e núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sessão persiste ao iniciar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Não é possível empilhar sessões",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sessão gera essência real",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Barra de sessão avança",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Interrupção preserva produção parcial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sessão termina sem continuar multiplicador",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fluxo passivo segue funcionando",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Importação preserva modelo de fluxo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelar não gasta essência",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Condensação sobe estrela e debita 90",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Abertura tem custo e efeito reais",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Refinamento consome custo próprio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Canal refinado não pode ser cobrado novamente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cinco estrelas liberam botão de ruptura",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ruptura muda reino e debita exatamente 480",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cultivo não altera ficha marcial",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Roteiro mantém 10 etapas e sinaliza duas concluídas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Compra original preserva a sessão de cultivo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Treino marcial preserva reino",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup exporta sessão, cursor e núcleo",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Importar mantém sessão de meditação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Seis ações de combate preservadas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ataque com teclado causa dano físico",
+      "passed": true,
+      "detail": {
+        "before": 105,
+        "after": 62
+      }
+    },
+    {
+      "name": "Pausa funciona",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Saída do duelo mantém reino",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Relatório offline explica limite de 12h",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Crédito offline exato no save",
+      "passed": true,
+      "detail": {
+        "received": 10972,
+        "expected": 10972
+      }
+    },
+    {
+      "name": "Fechar recibo não repete crédito",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reabrir o mesmo save não duplica crédito",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Relógio regressivo bloqueia geração e informa",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Quota cheia mantém personagem e avisa",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1366x768: Meditar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1366x768: Meridianos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1024x768: Meditar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1024x768: Meridianos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 390x844: Meditar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 390x844: Meridianos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 844x390: Meditar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 844x390: Meridianos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem erros JavaScript",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Zero requisições externas",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

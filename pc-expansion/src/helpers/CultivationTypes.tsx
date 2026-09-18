@@ -7,5 +7,7 @@ export namespace CultivationTypes {
  export interface Core {id:string;name:string;nature:Nature;archetype:Archetype;aspect:Aspect;quality:Quality;qualityRank:number;innate:string;channels:number;seed:string;awakenedAt:number|null;}
  export interface Meridian {id:number;open:boolean;refined:boolean;}
  export interface Timestamps {createdAt:number;lastActiveAt:number;lastCultivatedAt:number;offlineAccrualCursor:number;}
- export interface Model {core:Core;realm:Realm;star:number;essence:number;meridians:Meridian[];totalCultivated:number;timestamps:Timestamps;}
+ export interface Meditation {startedAt:number;endsAt:number;}
+ export interface Flow {version:2;enabledAt:number;fraction:number;meditation:Meditation|null;sessionsCompleted:number;}
+ export interface Model {flow?:Flow;core:Core;realm:Realm;star:number;essence:number;meridians:Meridian[];totalCultivated:number;timestamps:Timestamps;}
 }

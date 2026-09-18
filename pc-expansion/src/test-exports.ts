@@ -8,3 +8,5 @@ export {AssimilationEngine as Assimilation} from './helpers/AssimilationEngine';
 
 export {ExpansionRoadmap as Roadmap} from './helpers/ExpansionRoadmap';
 export {ArenaExpansion as Expansion} from './helpers/ArenaExpansion';
+
+export {CultivationFlow as Flow} from './helpers/CultivationFlow';

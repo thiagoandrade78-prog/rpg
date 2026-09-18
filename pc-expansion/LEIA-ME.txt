@@ -1,29 +1,71 @@
 ARENA — FILHOS DA AREIA
-EXPANSÃO 5.0 / ETAPA 1 DE 10 / O DESPERTAR
+EXPANSÃO 5.0 · ETAPA 2/10 — O FLUXO INTERIOR
 
-COMO JOGAR NO PC
-Abra ARENA_PC_EXPANSAO_01_DESPERTAR.html em Chrome ou Edge, como fez com o arquivo anterior. Não há instalador nem servidor. O arquivo contém a arte e todo o runtime.
+JOGAR NO PC
+1. Guarde um backup ARENA5 na versão anterior antes de trocar de arquivo.
+2. Abra ARENA_PC_EXPANSAO_02_FLUXO_INTERIOR.html no seu navegador.
+3. No jogo: Entrar no Ludus > Cultivo > Meditar.
+4. Se o gladiador antigo não aparecer, abra Ajuda e configurações e importe
+   o código ARENA5/ARENA3 ou o JSON exportado. Confirme a importação.
 
-Antes de mudar de arquivo, no jogo anterior abra Ajuda e configurações > Proteja seu progresso > COPIAR CÓDIGO ou EXPORTAR. No novo jogo, cole ARENA5: ou ARENA3: no campo Código de recuperação e confirme a importação. Também pode colar o conteúdo completo de um JSON v3/v5 exportado. O salvamento não é sincronizado automaticamente entre arquivos/navegadores.
+Não precisa instalar Node, usar servidor ou carregar dependências externas.
+O HTML inclui as nove ilustrações e o motor original da Edição Ilustrada.
+O progresso é salvo no navegador. O armazenamento pode variar por arquivo,
+perfil e permissões; a importação de backup é a transferência segura.
 
-NOVA ETAPA
-Entre no Ludus > Cultivo (ou Abrir Santuário Interior) > Despertar meu núcleo > Confirmar despertar. Sem custo de ouro ou essência.
-O mesmo núcleo será mantido quando mudar o nome, equipar o personagem, lutar, salvar e importar um backup. Use Núcleo, Meridianos e Jornada para examinar a ficha, os 12 canais e as dez entregas previstas.
+NOVIDADES DA ETAPA 2
+- Fluxo passivo de essência após o despertar.
+- Meditação em sessões de 30 segundos a seis vezes a taxa passiva.
+- Interrupção da sessão preserva tudo que já foi produzido.
+- Doze meridianos: abrir e refinar, com custos e confirmação.
+- Cinco estrelas em cada um dos sete reinos; custo crescente.
+- Ruptura garantida quando essência e requisitos de canais estão completos.
+- Cultivo offline de até 12 horas por retorno, registrado por timestamps.
+- Recibo do tempo e essência creditados; não há botão de coleta duplicável.
+- O tempo anterior à ativação da Etapa 2 não gera essência retroativa.
+- Cópia local do save anterior em arena-save-v5-before-stage-2.
 
-PRESERVADO
-Edição Ilustrada, nove artes originais, três arenas, 12 duelos, 26 equipamentos, cidades/loja/treino, combate e save v5.
+BALANCEAMENTO INICIAL
+Taxa passiva base: 12 essência/minuto, antes dos bônus aditivos.
+Qualidade: +7% por grau acima de Comum.
+Meridiano aberto: +4%. Refinado: mais +6%.
+Reino: +12% por reino acima de Desperto. Estrela: +2% por estrela acima de 1.
+Meditar multiplica a taxa resultante por 6 durante 30 segundos.
+Os bônus são apenas de cultivo nesta etapa. O combate não foi rebalanceado.
+Valores desta primeira versão podem mudar após testes de balanceamento.
 
-AINDA NÃO INCLUÍDO
-Meditação, cultivo offline, captura, PoketPets jogáveis, bônus espirituais e Avatares. São as próximas etapas; não estão representados por botões fictícios de ação nesta entrega.
+CONTRATOS DE TEMPO
+Toda alteração de taxa contabiliza primeiro o tempo na taxa anterior.
+Uma meditação encerrará ao final dos 30 segundos mesmo com o arquivo fechado.
+Depois desse limite, o período restante gera somente essência passiva.
+O retorno considera no máximo as últimas 12 horas; horas excedentes não ficam
+pendentes para outra coleta. Frações de essência são preservadas entre ticks.
+Se o relógio retroceder, o jogo suspende crédito até alcançar o último cursor.
+Não há servidor verificando o relógio: editar a hora ou restaurar um backup
+antigo pode alterar o resultado. Não é um sistema antitrapaça competitivo.
 
-TECLADO
-A/D ou setas: movimentar; J: ataque leve/combo; K: pesado;
-L/Shift: escudo; espaço: esquivar; W/seta para cima: saltar;
-E: fúria cheia; Esc: pausar/continuar.
+TECLADO (COMBATE ORIGINAL)
+A/D ou setas: mover. J: ataque leve/combo. K: pesado. L/Shift: escudo.
+Espaço: esquiva. W/seta acima: salto. E: fúria. Esc: pausar/continuar.
+O treino livre não concede recompensas nem muda o progresso marcial.
 
-FONTE
-No pacote de código-fonte: npm ci; npm run typecheck; npm run build; npm test.
-A saída do build está em dist/ARENA_FILHOS_DA_AREIA_PC.html.
-Consulte docs/EXPANSAO_10_ETAPAS.md e os relatórios de testes.
+LIMITES DESTA ENTREGA
+Cultivo e progressão espiritual estão ativos. PoketPets, captura, assimilação
+jogável e metamorfoses ainda não foram implementados nesta linha ilustrada.
+O estado dos modelos futuros permanece preservado nos backups v5.
+O domínio publicado do Floot e a versão anterior não são substituídos.
 
-A publicação Floot e o HTML anterior não foram substituídos.
+TESTES
+Veja VALIDACAO.json no pacote do jogo e docs/verification no código-fonte.
+Testes de navegador usam o HTML real em Chromium com rede bloqueada.
+O ambiente não permite navegar por file://. Armazenamento e relógio foram
+controlados nos testes de interface. Não houve teste em um Windows físico.
+
+PARA DESENVOLVER (PACOTE DE CÓDIGO-FONTE)
+npm ci
+npm run typecheck
+npm run build
+npm test
+O build sai em dist/ARENA_FILHOS_DA_AREIA_PC.html.
+O script de testes de interface usa Python Playwright e Chromium.
+Não distribua node_modules junto do HTML; não é necessário para jogar.
