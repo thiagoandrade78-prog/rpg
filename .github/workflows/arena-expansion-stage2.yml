@@ -1,0 +1,62 @@
+name: ARENA 5.0 stage 2 - O Fluxo Interior
+on:
+  push:
+    branches:
+      - expansion/pc-stage-02-flow
+    paths:
+      - .github/workflows/arena-expansion-stage2.yml
+permissions:
+  contents: write
+jobs:
+  verify-and-checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: expansion/pc-stage-02-flow
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Retrieve exact tested source snapshot
+        run: |
+          curl --fail --location --max-time 120 -o /tmp/arena-stage2.zip 'https://arena-filhos-da-areia.floot.app/_cdn/static/a7265a3b-af89-4542-bff0-84cf673c6021-arena-pc-expansion-stage2-source.zip'
+          echo 'b6c402e8f8d7f250d96aba21f1b23583559ce7bc50948b0a303b5c3077c26bb3  /tmp/arena-stage2.zip' | sha256sum --check
+          python - <<'PY'
+          import zipfile
+          from pathlib import Path
+          root = Path('pc-expansion').resolve()
+          root.mkdir(exist_ok=True)
+          with zipfile.ZipFile('/tmp/arena-stage2.zip') as z:
+              for item in z.infolist():
+                  target = (root / item.filename).resolve()
+                  if not target.is_relative_to(root):
+                      raise ValueError('Invalid archive entry')
+              z.extractall(root)
+          PY
+      - name: Typecheck, build and regression tests
+        working-directory: pc-expansion
+        run: |
+          npm ci --no-audit --no-fund
+          npm run typecheck
+          npm run build
+          npm test
+      - name: Save tested source checkpoint on stage 2 only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add pc-expansion
+          if ! git diff --cached --quiet; then
+            git commit -m 'ARENA 5.0 — Etapa 2: O Fluxo Interior'
+            git push origin HEAD:expansion/pc-stage-02-flow
+          fi
+      - name: Preserve portable build and verification reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: arena-stage2-flow-tested
+          retention-days: 14
+          path: |
+            pc-expansion/dist/ARENA_FILHOS_DA_AREIA_PC.html
+            pc-expansion/dist/*report.json
+            pc-expansion/docs/verification/stage2-browser-report.json
+            pc-expansion/LEIA-ME.txt
