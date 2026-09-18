@@ -6,7 +6,7 @@
   "externalRequests": [],
   "tests": [
     {
-      "name": "Build identifica etapa 3",
+      "name": "Build mantém recursos da etapa 3",
       "passed": true,
       "detail": null
     },

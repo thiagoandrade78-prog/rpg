@@ -1,10 +1,10 @@
 {
-  "title": "ARENA — Filhos da Areia · Feras Espirituais",
+  "title": "ARENA — Filhos da Areia · Terras Selvagens",
   "sourceProject": "99acc7d3-ea06-4526-be68-86475e56cd5b",
   "sourceVersion": 1789690036364,
-  "edition": "Illustrated 4.0 + Expansion 5.0 stage 3",
-  "expansionVersion": "5.0.0-alpha.3",
-  "expansionStage": 3,
+  "edition": "Illustrated 4.0 + Expansion 5.0 stage 4",
+  "expansionVersion": "5.0.0-alpha.4",
+  "expansionStage": 4,
   "assets": [
     {
       "file": "a7c9cb85-cad4-4903-bf03-9dcf780ee7fb.png",
@@ -52,10 +52,10 @@
       "sha256": "07e7e9fe20302ef8547d6dae9ca81bfa1d5999319f2505468903a36cbfb83b2d"
     }
   ],
-  "htmlBytes": 21703491,
-  "htmlSha256": "62e17955857338853f398823506764db61839ac8ea683705fc13a52a6d1edd74",
-  "jsBytes": 19304660,
-  "cssBytes": 130546,
+  "htmlBytes": 21787614,
+  "htmlSha256": "e0de6e6780faadafcb4c997babce160534af99c80318a7b50eeac579c87aeb08",
+  "jsBytes": 19364726,
+  "cssBytes": 154604,
   "networkRequired": false,
   "fontsBundled": false
 }

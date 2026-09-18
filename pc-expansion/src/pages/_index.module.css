@@ -48,3 +48,6 @@
 
 .beastBanner{background:linear-gradient(120deg,#e3e8bf,#bed0a6)!important;border-color:#728e5d!important;}.beastBanner .cultivationBadge{background:linear-gradient(#557e5d,#304d40);color:#ede4b1;}.beastBanner b{color:#3e6344;}.beastBanner small{color:#748653;}.beastBanner em{color:#71835b;}
 @media(max-width:650px){.bottomNav{gap:1px;padding-inline:3px;}.bottomNav>button{min-width:42px!important;}.bottomNav span{font-size:9px;}.bottomNav>button>svg{width:18px;height:18px;}}
+
+.wildBanner{background:linear-gradient(#d1e1c5,#a8b68b)!important;border-color:#697c53!important;}.wildBanner b{color:#48613b!important;}.wildBanner .cultivationBadge{background:#547562!important;}
+@media(max-width:650px){.bottomNav{gap:1px;padding-inline:2px;}.bottomNav span{font-size:9px;}.bottomNav>button>svg{width:18px;height:18px;}}

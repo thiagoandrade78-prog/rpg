@@ -13,3 +13,7 @@ export {CultivationFlow as Flow} from './helpers/CultivationFlow';
 
 export {BeastSpecies as Species} from './helpers/BeastSpecies';
 export {BeastSanctuary as Sanctuary} from './helpers/BeastSanctuary';
+
+export {WildWorld,WildRegions} from './helpers/WildWorld';
+export {WildCombatEngine} from './helpers/WildCombatEngine';
+export {WildRig} from './helpers/WildRig';

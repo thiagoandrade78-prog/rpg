@@ -11,7 +11,7 @@ O repositório `thiagoandrade78-prog/rpg` contém as ideias de núcleo, oito esp
 | 1 — O Despertar | Santuário, núcleo individual permanente, visualização dos 12 meridianos, migração e backups defensivos | Revelar uma vez; preservar personagem, economia, campanha e núcleo após salvar/importar; nenhum dano ou bônus novo no combate |
 | 2 — O fluxo interior | Meditação, essência, abertura/refinamento, estrelas, rupturas e cultivo offline | Ganho baseado em tempo, teto offline e cursor único; não multiplicar recompensas por recarga ou por trocar relógio |
 | 3 — Feras espirituais | Oito espécies originais, indivíduos, potencial, linhagens, bestiário e santuário | Coleção validada, identidades únicas e criaturas desenhadas; não usar emojis como animação final |
-| 4 — Terras selvagens | Habitais, encontros reais, combate com feras, subjugação e pactos | Enfraquecer uma entidade no motor; captura coerente, rejeição/fuga; salvar o indivíduo efetivamente encontrado |
+| 4 — Terras selvagens | Habitats, encontros reais, combate com feras, subjugação e pactos | Enfraquecer uma entidade no motor; captura coerente, rejeição/fuga; salvar o indivíduo efetivamente encontrado |
 | 5 — Ressonância | Assimilação, afinidade, sinergia, Domínio I–V e bônus de cultivo | Uma referência ativa válida, fórmula explicável, bônus aplicado de fato; não explorar troca para ganhar afinidade infinita |
 | 6 — Poder herdado | Passivas, técnicas específicas, custos, recargas e supremas | Habilidades alcançam/colidem com alvos, consomem recurso uma vez e possuem efeitos próprios testados |
 | 7 — Metamorfose | Manifestação, híbridos e Avatares | Rig, anatomia, animação e hurtboxes coerentes por espécie, sem cobrir um humano com um emoji |
@@ -19,7 +19,7 @@ O repositório `thiagoandrade78-prog/rpg` contém as ideias de núcleo, oito esp
 | 9 — Sangue ancestral | Evoluções ramificadas, linhagens, NPCs, missões e chefes de mundo | Evolução não repetível, requisitos reais, recompensas únicas e chefes lutados no motor — não sorteio de vitória |
 | 10 — As novas lendas | Balanceamento, arte, áudio, acessibilidade, testes e pacote portátil | Campanha completa sem bloqueios, regressões verificadas, backup transferível e um HTML sem dependências de rede |
 
-Somente a etapa 1 está implementada neste pacote. Cada próxima entrega deve manter uma build estável e passar novamente nos testes de preservação.
+As etapas 1–4 estão implementadas neste pacote. A entrega atual é **Terras Selvagens**. As descrições detalhadas da Etapa 1 abaixo são o registro histórico de sua fundação; consulte ETAPA_02_FLUXO_INTERIOR.md, ETAPA_03_FERAS_ESPIRITUAIS.md e ETAPA_04_TERRAS_SELVAGENS.md para as entregas cumulativas. Cada próxima entrega deve manter uma build estável e passar novamente nos testes de preservação.
 
 ## Referências verificadas no GitHub
 

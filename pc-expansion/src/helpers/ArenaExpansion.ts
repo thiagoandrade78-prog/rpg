@@ -4,8 +4,8 @@ import {CultivationFlow, CultivationCommand} from './CultivationFlow';
 
 /** Atomic domain transition; does not perform I/O or modify the martial character. */
 export class ArenaExpansion {
- static readonly version='5.0.0-alpha.3';
- static readonly stage=3;
+ static readonly version='5.0.0-alpha.4';
+ static readonly stage=4;
  static settle(save:T.SaveV5,now=Date.now()){
   const result=CultivationFlow.settle(save.cultivation,now);
   return {...result,save:result.model===save.cultivation?save:{...save,cultivation:result.model,meta:{...save.meta,updatedAt:Math.max(save.meta.updatedAt,result.model.timestamps.lastActiveAt)}}};

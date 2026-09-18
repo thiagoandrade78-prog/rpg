@@ -1,45 +1,51 @@
 ARENA — FILHOS DA AREIA
-EXPANSÃO 5.0 — ETAPA 3/10: FERAS ESPIRITUAIS
+EXPANSÃO 5.0 • ETAPA 4/10: TERRAS SELVAGENS
 
 COMO ABRIR NO PC
-Salve ARENA_PC_EXPANSAO_03_FERAS_ESPIRITUAIS.html e abra no navegador pelo computador.
-O código e as imagens estão incorporados; não é necessário servidor ou instalação.
-Mantenha o arquivo numa pasta fixa, fora da prévia temporária do chat, para facilitar o acesso ao mesmo armazenamento.
+Salve ARENA_PC_EXPANSAO_04_TERRAS_SELVAGENS.html no computador.
+Abra com dois cliques ou botão direito > Abrir com > Chrome/Edge.
+Todo o jogo e suas imagens estão nesse único arquivo. Não requer servidor ou login.
 
-ANTES DE ATUALIZAR
-Na Etapa 2, entre em Ajuda e configurações > Proteja seu progresso > COPIAR CÓDIGO ou EXPORTAR.
-Na Etapa 3, importe o código ARENA5 completo (ou JSON de backup) na mesma seção.
-Um novo caminho de arquivo, navegador ou perfil pode não compartilhar o save do anterior. Não existe sincronização automática.
-Não use o HTML antigo para continuar depois de migrar os dados: ele não conhece os novos campos de santuário.
+ANTES DE TROCAR DE ARQUIVO
+Na versão anterior, abra Ajuda e configurações > Proteja seu progresso > Exportar
+ou Copiar código. No novo HTML, importe o ARENA5 caso o personagem não apareça.
+Caminhos locais e navegadores diferentes podem usar armazenamentos distintos.
+Exporte sempre antes de apagar dados do navegador, mover o jogo ou trocar de PC.
 
-COMEÇAR A ETAPA 3
-Entrar no Ludus > Feras.
-Se o núcleo ainda não estiver desperto, visite Cultivo e confirme o despertar.
-Lyra oferece UM acolhimento gratuito entre Pyrofang, Stoneback e Thornstag.
-Observe potencial, temperamento e linhagem e confirme a escolha. Não é possível receber uma segunda oferta na mesma jornada.
-Compêndio > selecione um registro > ESTUDAR REGISTRO. Estudar revela a ficha; não captura a criatura.
+NOVIDADE
+Entrar no Ludus > Explorar. Desperte o núcleo na aba Cultivo se necessário.
+O Bosque Viridiano é a primeira rota. Vitórias/capturas liberam as demais.
+Seu gladiador e as oito espécies são articulados e combatem em tempo real.
 
-CUIDADOS E TREINO
-CUIDAR: 15 de ouro; +6 afinidade; intervalo de 60 s.
-TREINAR: 20 + 8 × nível em essência; 30 s; concluir concede +60 XP e +3 afinidade.
-O treino fica salvo. A recompensa é recebida uma única vez em CONCLUIR TREINO.
-OBSERVAR/MOVIMENTAR: animações de exibição no santuário.
+CONTROLES
+A/D ou setas: mover • J: ataque leve/combo • K: pesado
+L ou Shift: manter guarda; erguer antes do impacto permite aparar
+W ou seta para cima: saltar • Espaço: esquivar • E: fúria a 100%
+Esc: pausar/continuar • Botões também funcionam com mouse/toque
 
-CONTROLES ORIGINAIS DA ARENA
-A/D ou setas: andar. J: leve. K: pesado. L ou Shift: escudo.
-Espaço: esquiva. W/seta para cima: salto. E: fúria. Esc: pausa.
+CAPTURA
+Reduza vida da fera para até 40% sem zerar, e vontade para até 60%.
+R: foco de 1,1 s; custa 18 vigor, reduz vontade sem dano e pode ser interrompido.
+B: subjugar quando estiver perto. Enter ou botão: selar cada um de três pulsos.
+Procure o centro dourado. A média + compatibilidade precisa alcançar 60.
+Falhar retoma o combate; três rejeições fazem a fera escapar.
+Após sucesso, clique REGISTRAR RESULTADO e volte ao Santuário.
+A criatura capturada mantém o nível, potencial e linhagem encontrados.
+
+SALVAMENTO
+A cada 2 segundos e nas transições/pulsos, o encontro é salvo.
+Ao reabrir, escolha RETOMAR EXPEDIÇÃO: não há novo sorteio.
+Batalhas param com o jogo fechado. Fechamento abrupto pode perder até 2 segundos.
+Recuar não custa ouro. Resultados precisam ser registrados uma única vez.
+Use uma única aba. Quando houver aviso de falha no armazenamento, exporte backup.
 
 ESCOPO
-O jogo ilustrado, campanha, equipamentos, combate, cultivo e santuário estão nesta cópia.
-Captura selvagem, assimilação, habilidades da fera na arena, metamorfoses e evolução são etapas futuras.
-Nomes de poderes/evoluções no Compêndio são registros de espécie, não funções de combate já ativadas.
-A versão publicada no Floot não foi substituída por este HTML.
-
-PROTEJA SEU SAVE
-Exporte regularmente. A atualização faz uma cópia local anterior à Etapa 3.
-Se o armazenamento falhar, mantenha a aba aberta e exporte seu backup.
-Abra apenas uma aba do jogo por vez para evitar conflitos.
+Inclui o jogo ilustrado original, cultivo, Santuário, Compêndio e expedições.
+Não inclui ainda assimilação, evolução e transformação jogáveis.
+Nenhuma publicação ou domínio Floot foi substituído por esta versão local.
 
 TESTES
-193 testes de lógica, typecheck e 123 verificações de interface (77 novas + 46 de regressão), em Chromium, sem chamadas externas.
-O ambiente não permite abrir file://; os testes carregaram o conteúdo real do HTML em about:blank. Não foi um teste em Windows físico.
+Typecheck, build, testes de lógica e testes de interface em Chromium.
+O ambiente proíbe URLs file://; nele o conteúdo real do HTML foi executado via
+injeção em documento isolado. Não houve teste em Windows físico/iPhone real.
+O pacote de código contém os scripts e relatórios reproduzíveis.

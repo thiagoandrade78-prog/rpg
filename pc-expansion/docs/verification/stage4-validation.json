@@ -1,0 +1,2158 @@
+{
+  "title": "ARENA — Etapa 4/10: Terras Selvagens",
+  "version": "5.0.0-alpha.4",
+  "testedAtUtc": "2026-09-18T20:02:02.600052+00:00",
+  "sourceBaseline": "dd0f9ee9c29776dc8c3a1058a7380273d800704a",
+  "branch": "expansion/pc-stage-04-wilds",
+  "typecheck": {
+    "command": "tsc --noEmit",
+    "exitCode": 0
+  },
+  "build": {
+    "title": "ARENA — Filhos da Areia · Terras Selvagens",
+    "sourceProject": "99acc7d3-ea06-4526-be68-86475e56cd5b",
+    "sourceVersion": 1789690036364,
+    "edition": "Illustrated 4.0 + Expansion 5.0 stage 4",
+    "expansionVersion": "5.0.0-alpha.4",
+    "expansionStage": 4,
+    "assets": [
+      {
+        "file": "a7c9cb85-cad4-4903-bf03-9dcf780ee7fb.png",
+        "bytes": 1528470,
+        "sha256": "823be2ab304513cfca32a2a7a9e5fbb85f05fae38b0c428b917c696286c384b2"
+      },
+      {
+        "file": "802c63f2-7caf-44c8-9166-7c540ce11958.png",
+        "bytes": 1492167,
+        "sha256": "430efac33be383870919e81914f086e78d6436941865eda399b2cc845638d6a0"
+      },
+      {
+        "file": "e2eda776-2e85-44ba-a900-2cbd8d71227c.png",
+        "bytes": 1489984,
+        "sha256": "5fedfc1638f31ec2f1d643b1257593662dcb57b83097c102309724deed053756"
+      },
+      {
+        "file": "96ba1505-ebc3-4540-b180-beb91e10a003.png",
+        "bytes": 1699501,
+        "sha256": "fa89a4516a9aab16769b0da2001ac95726f31822841e5c6c99dd99beb9907f47"
+      },
+      {
+        "file": "d9bfc547-530d-45bf-b40a-c06b509a5e9e.png",
+        "bytes": 1416628,
+        "sha256": "343a3a25f9d8ece480bd2277f549e89f770025e429868d50b85db5224c159cfd"
+      },
+      {
+        "file": "2aabd9ae-6795-426a-ba49-1050f185884c.png",
+        "bytes": 1518415,
+        "sha256": "7934f11a0fa26248248c9e84db4a2fe77d9f4bde4bc0dd6c5d1a58044bf388fd"
+      },
+      {
+        "file": "3d97d210-6ba0-408b-816a-0b37143f46e7.png",
+        "bytes": 1693390,
+        "sha256": "c759424c6ed6b207638307af81909718113ac3f0a904ca47bacf381367c9d761"
+      },
+      {
+        "file": "cfe53118-324d-4182-baf0-cac707da1950.png",
+        "bytes": 1607834,
+        "sha256": "6c3ec76a8f89da806b6d2a05828604c2759817962ca4189c2d9a0aa05eb4672a"
+      },
+      {
+        "file": "a47a8fa1-31e6-4783-94c8-6616173c090a.png",
+        "bytes": 1700534,
+        "sha256": "07e7e9fe20302ef8547d6dae9ca81bfa1d5999319f2505468903a36cbfb83b2d"
+      }
+    ],
+    "htmlBytes": 21787614,
+    "htmlSha256": "e0de6e6780faadafcb4c997babce160534af99c80318a7b50eeac579c87aeb08",
+    "jsBytes": 19364726,
+    "cssBytes": 154604,
+    "networkRequired": false,
+    "fontsBundled": false
+  },
+  "logic": {
+    "passed": 283,
+    "failed": 0,
+    "reports": [
+      {
+        "passed": 37,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "Movimento contínuo",
+            "passed": true
+          },
+          {
+            "name": "Golpe fora de alcance não causa dano",
+            "passed": true
+          },
+          {
+            "name": "Lâmina animada atinge hurtbox próxima",
+            "passed": true
+          },
+          {
+            "name": "Uma animação causa um único acerto",
+            "passed": true
+          },
+          {
+            "name": "Vigor insuficiente bloqueia ataque",
+            "passed": true
+          },
+          {
+            "name": "Recuperação de vigor",
+            "passed": true
+          },
+          {
+            "name": "Janela de aparo",
+            "passed": true
+          },
+          {
+            "name": "Bloqueio reduz dano e consome postura",
+            "passed": true
+          },
+          {
+            "name": "Golpe pesado quebra guarda",
+            "passed": true
+          },
+          {
+            "name": "Esquiva move e gera invulnerabilidade",
+            "passed": true
+          },
+          {
+            "name": "Salto possui altura e aterrissagem",
+            "passed": true
+          },
+          {
+            "name": "Pausa congela e limpa controles",
+            "passed": true
+          },
+          {
+            "name": "Fúria precisa da barra cheia",
+            "passed": true
+          },
+          {
+            "name": "Articulações da arma mudam no ataque",
+            "passed": true
+          },
+          {
+            "name": "Lança alcança mais que adaga",
+            "passed": true
+          },
+          {
+            "name": "Vitória produz um único resultado",
+            "passed": true
+          },
+          {
+            "name": "IA avança e não fica estática",
+            "passed": true
+          },
+          {
+            "name": "Equipamentos iniciais nos slots corretos",
+            "passed": true
+          },
+          {
+            "name": "Comprar sem equipar não acumula atributos",
+            "passed": true
+          },
+          {
+            "name": "Loja rejeita ouro insuficiente e categoria trancada",
+            "passed": true
+          },
+          {
+            "name": "Vitórias repetidas não avançam campanha",
+            "passed": true
+          },
+          {
+            "name": "Subir de nível preserva XP excedente",
+            "passed": true
+          },
+          {
+            "name": "ARENA3 preserva Unicode e equipamento",
+            "passed": true
+          },
+          {
+            "name": "Backups inválidos são rejeitados",
+            "passed": true
+          },
+          {
+            "name": "Treino não altera economia nem progresso",
+            "passed": true
+          },
+          {
+            "name": "Migração v3 para v5 preserva todo o personagem",
+            "passed": true
+          },
+          {
+            "name": "Núcleo determinístico e dentro dos limites",
+            "passed": true
+          },
+          {
+            "name": "Timestamps de fundação separados e imutáveis",
+            "passed": true
+          },
+          {
+            "name": "Validação defensiva de valores e referências",
+            "passed": true
+          },
+          {
+            "name": "Indivíduos e bestiário não duplicam IDs",
+            "passed": true
+          },
+          {
+            "name": "Assimilação rejeita feras alheias",
+            "passed": true
+          },
+          {
+            "name": "Save v5 compatível com ArenaEngine original",
+            "passed": true
+          },
+          {
+            "name": "Combate não apaga os novos modelos v5",
+            "passed": true
+          },
+          {
+            "name": "Migração local ocorre uma vez e preserva v3 original",
+            "passed": true
+          },
+          {
+            "name": "ARENA5 e ARENA3 importam corretamente",
+            "passed": true
+          },
+          {
+            "name": "Artes e conteúdo completos do Floot",
+            "passed": true
+          },
+          {
+            "name": "HTML independente sem módulos ou fontes externas",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "passed": 34,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "Despertar revela o núcleo preexistente sem sorteio",
+            "passed": true
+          },
+          {
+            "name": "Despertar é idempotente mesmo com datas diferentes",
+            "passed": true
+          },
+          {
+            "name": "Despertar não modifica a referência de entrada",
+            "passed": true
+          },
+          {
+            "name": "Domínios do save preservados no despertar",
+            "passed": true
+          },
+          {
+            "name": "Ouro, XP e essência não são concedidos artificialmente",
+            "passed": true
+          },
+          {
+            "name": "Renomear e equipar não sorteiam outro núcleo",
+            "passed": true
+          },
+          {
+            "name": "Migração do mesmo v3 possui identidade determinística",
+            "passed": true
+          },
+          {
+            "name": "Gerador determinístico validado em 500 seeds",
+            "passed": true
+          },
+          {
+            "name": "Dois seeds distintos produzem identidades distintas",
+            "passed": true
+          },
+          {
+            "name": "Um núcleo adormecido não ganha estrelas pela validação",
+            "passed": true
+          },
+          {
+            "name": "Campos despertos antigos sem timestamp são reconciliados",
+            "passed": true
+          },
+          {
+            "name": "Qualidade e rank inconsistentes são corrigidos",
+            "passed": true
+          },
+          {
+            "name": "Doze meridianos únicos e refinamento só em canal aberto",
+            "passed": true
+          },
+          {
+            "name": "Canais potenciais abrem de um a sete meridianos no despertar",
+            "passed": true
+          },
+          {
+            "name": "Não fecha meridianos previamente válidos",
+            "passed": true
+          },
+          {
+            "name": "Relógio regressivo não regride lastActiveAt",
+            "passed": true
+          },
+          {
+            "name": "Despertar não regride timestamps e não acumula offline",
+            "passed": true
+          },
+          {
+            "name": "Persistência preserva updatedAt monotônico",
+            "passed": true
+          },
+          {
+            "name": "Checkpoint copia exatamente os bytes anteriores uma vez",
+            "passed": true
+          },
+          {
+            "name": "Quota cheia nunca substitui v5 válido por personagem novo",
+            "passed": true
+          },
+          {
+            "name": "Quota cheia mantém migração v3 em memória",
+            "passed": true
+          },
+          {
+            "name": "Leitura bloqueada retorna aviso, sem exceção no boot",
+            "passed": true
+          },
+          {
+            "name": "Save corrompido mantém bytes e recupera v3 válido",
+            "passed": true
+          },
+          {
+            "name": "Coleção vazia remove referência de assimilação fantasma",
+            "passed": true
+          },
+          {
+            "name": "Roundtrip ARENA5 preserva núcleo desperto",
+            "passed": true
+          },
+          {
+            "name": "JSON v5 exportado pode ser importado diretamente",
+            "passed": true
+          },
+          {
+            "name": "JSON e código v3 migram sem apagar personagem",
+            "passed": true
+          },
+          {
+            "name": "Backup excessivamente grande e código estrangeiro rejeitados",
+            "passed": true
+          },
+          {
+            "name": "Núcleo desperto preservado após recompensa da arena",
+            "passed": true
+          },
+          {
+            "name": "Despertar não altera dano, vida ou alcance de combate",
+            "passed": true
+          },
+          {
+            "name": "Roteiro de expansão tem 10 etapas com IDs únicos",
+            "passed": true
+          },
+          {
+            "name": "Engine, personagens, renderer, controles e nove ilustrações idênticos à base",
+            "passed": true
+          },
+          {
+            "name": "HTML não injeta scripts prototípicos desconectados",
+            "passed": true
+          },
+          {
+            "name": "Backup v5 sem personagem não pode substituir progresso",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "passed": 59,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "Versão preserva conteúdo da etapa 2",
+            "passed": true
+          },
+          {
+            "name": "Stage1 inicializa fluxo sem essência retroativa",
+            "passed": true
+          },
+          {
+            "name": "Inicialização idempotente preserva cursor",
+            "passed": true
+          },
+          {
+            "name": "Fluxo não altera núcleo ou meridianos",
+            "passed": true
+          },
+          {
+            "name": "Dormência nunca produz essência",
+            "passed": true
+          },
+          {
+            "name": "Taxa inicial sem canais é 12/min",
+            "passed": true
+          },
+          {
+            "name": "Um minuto passivo produz exatamente 12",
+            "passed": true
+          },
+          {
+            "name": "Tempo fracionário preservado entre ticks",
+            "passed": true
+          },
+          {
+            "name": "1000 ticks e uma sessão única são equivalentes",
+            "passed": true
+          },
+          {
+            "name": "Reabrir no mesmo instante não repete crédito",
+            "passed": true
+          },
+          {
+            "name": "Cursor retrocedido não dá crédito nem regride",
+            "passed": true
+          },
+          {
+            "name": "Relógio não finito não gera essência",
+            "passed": true
+          },
+          {
+            "name": "Limite de 12 horas offline",
+            "passed": true
+          },
+          {
+            "name": "Horas acima do limite não ficam para nova coleta",
+            "passed": true
+          },
+          {
+            "name": "Sessão dura exatamente 30s",
+            "passed": true
+          },
+          {
+            "name": "Clicar meditar duas vezes não empilha sessões",
+            "passed": true
+          },
+          {
+            "name": "Meditação tem taxa 6x e termina automaticamente",
+            "passed": true
+          },
+          {
+            "name": "Sessão terminada não finaliza nem premia de novo",
+            "passed": true
+          },
+          {
+            "name": "Fechar jogo não torna meditação infinita",
+            "passed": true
+          },
+          {
+            "name": "Limite longo usa taxa passiva se sessão já terminou",
+            "passed": true
+          },
+          {
+            "name": "Encerrar cedo mantém exatamente produção decorrida",
+            "passed": true
+          },
+          {
+            "name": "Encerrar sessão inexistente não concede nada",
+            "passed": true
+          },
+          {
+            "name": "Nova sessão após conclusão tem janela nova",
+            "passed": true
+          },
+          {
+            "name": "Meditação exige despertar",
+            "passed": true
+          },
+          {
+            "name": "Qualidade, reino, estrelas e canais aumentam taxa real",
+            "passed": true
+          },
+          {
+            "name": "Decomposição dos bônus confere com taxa",
+            "passed": true
+          },
+          {
+            "name": "Abrir custa essência e não ouro",
+            "passed": true
+          },
+          {
+            "name": "Refinar exige canal aberto",
+            "passed": true
+          },
+          {
+            "name": "Refinar tem custo próprio e não fecha canal",
+            "passed": true
+          },
+          {
+            "name": "Canal aberto não pode ser cobrado de novo",
+            "passed": true
+          },
+          {
+            "name": "Canal refinado não pode ser cobrado de novo",
+            "passed": true
+          },
+          {
+            "name": "IDs de meridiano inválidos são rejeitados",
+            "passed": true
+          },
+          {
+            "name": "Recursos insuficientes não alteram objeto",
+            "passed": true
+          },
+          {
+            "name": "Mudança de taxa só afeta tempo futuro",
+            "passed": true
+          },
+          {
+            "name": "Subir estrela desconta custo e mantém reino",
+            "passed": true
+          },
+          {
+            "name": "Cotação antiga impede cobrança de estrela diferente",
+            "passed": true
+          },
+          {
+            "name": "Custo das estrelas cresce progressivamente",
+            "passed": true
+          },
+          {
+            "name": "Romper reino exige requisitos de meridianos",
+            "passed": true
+          },
+          {
+            "name": "Ruptura elegível garantida e estrela volta a 1",
+            "passed": true
+          },
+          {
+            "name": "Reinos superiores exigem refinamento",
+            "passed": true
+          },
+          {
+            "name": "Todas as 35 posições de cultivo são alcançáveis",
+            "passed": true
+          },
+          {
+            "name": "Limite transcendente nunca cobra essência",
+            "passed": true
+          },
+          {
+            "name": "Reserva máxima não estoura ou fica negativa",
+            "passed": true
+          },
+          {
+            "name": "Limite bloqueia meditação desnecessária",
+            "passed": true
+          },
+          {
+            "name": "Total cultivado não diminui quando há investimento",
+            "passed": true
+          },
+          {
+            "name": "Transições funcionam com entrada congelada",
+            "passed": true
+          },
+          {
+            "name": "Caminhos do save martial e feras são preservados",
+            "passed": true
+          },
+          {
+            "name": "Avanço espiritual não muda a ficha de combate",
+            "passed": true
+          },
+          {
+            "name": "ARENA5 mantém sessão e frações no roundtrip",
+            "passed": true
+          },
+          {
+            "name": "Backup de sessão completa offline corretamente",
+            "passed": true
+          },
+          {
+            "name": "Flow malformado é sanitizado",
+            "passed": true
+          },
+          {
+            "name": "Cursor não pode preceder ativação do fluxo",
+            "passed": true
+          },
+          {
+            "name": "Sessão encerrada não ressuscita ao importar",
+            "passed": true
+          },
+          {
+            "name": "Stage2 preserva backup byte a byte uma única vez",
+            "passed": true
+          },
+          {
+            "name": "Relógio regressivo também bloqueia comandos pagos",
+            "passed": true
+          },
+          {
+            "name": "Settle total sobe timestamps monotonamente",
+            "passed": true
+          },
+          {
+            "name": "Todos os canais e refinamentos têm custo distinto positivo",
+            "passed": true
+          },
+          {
+            "name": "Código da nova UI chama o domínio em vez de mutar essência",
+            "passed": true
+          },
+          {
+            "name": "Build autocontida inclui fluxo e não depende da rede",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "passed": 63,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "Identificação da versão inclui sistemas da etapa 3",
+            "passed": true
+          },
+          {
+            "name": "Catálogo contém oito IDs únicos",
+            "passed": true
+          },
+          {
+            "name": "Oito anatomias distintas para as oito espécies",
+            "passed": true
+          },
+          {
+            "name": "Cada espécie contém natureza, arquétipo, habitat, família e evolução",
+            "passed": true
+          },
+          {
+            "name": "Cada espécie possui passiva, duas técnicas e suprema próprias",
+            "passed": true
+          },
+          {
+            "name": "Três candidatas iniciais, sem lendas gratuitas",
+            "passed": true
+          },
+          {
+            "name": "Espécie desconhecida na geração é rejeitada",
+            "passed": true
+          },
+          {
+            "name": "Geração é determinística, não depende do relógio",
+            "passed": true
+          },
+          {
+            "name": "Seeds e espécies produzem identidades distintas",
+            "passed": true
+          },
+          {
+            "name": "500 espécimes mantêm limites e linhagem de 100%",
+            "passed": true
+          },
+          {
+            "name": "Prévia corresponde exatamente ao indivíduo acolhido",
+            "passed": true
+          },
+          {
+            "name": "Renomear gladiador não sorteia candidatos novamente",
+            "passed": true
+          },
+          {
+            "name": "Dormência impede acolhimento",
+            "passed": true
+          },
+          {
+            "name": "Acolhimento adiciona um indivíduo e registra espécie",
+            "passed": true
+          },
+          {
+            "name": "Acolhimento é grátis e preserva combate/cultivo",
+            "passed": true
+          },
+          {
+            "name": "Segundo acolhimento é rejeitado sem duplicar fera",
+            "passed": true
+          },
+          {
+            "name": "Candidata não inicial é rejeitada no domínio",
+            "passed": true
+          },
+          {
+            "name": "Flag de acolhimento continua bloqueada em coleção vazia",
+            "passed": true
+          },
+          {
+            "name": "Coleção legada não recebe nova fera inicial",
+            "passed": true
+          },
+          {
+            "name": "Estudo é gratuito e não captura animais",
+            "passed": true
+          },
+          {
+            "name": "Estudar repetidamente não duplica registro ou altera save",
+            "passed": true
+          },
+          {
+            "name": "Estudo funciona antes do despertar sem conceder bônus",
+            "passed": true
+          },
+          {
+            "name": "Filtragem desconhecida não altera catálogo",
+            "passed": true
+          },
+          {
+            "name": "Comando desconhecido é rejeitado",
+            "passed": true
+          },
+          {
+            "name": "Comandos exigem relógio finito e inteiro",
+            "passed": true
+          },
+          {
+            "name": "Companheiro só pode apontar para fera própria",
+            "passed": true
+          },
+          {
+            "name": "Selecionar/recolher companheiro não muda atributos ou assimilação",
+            "passed": true
+          },
+          {
+            "name": "Renomear preserva Unicode e toda identidade genética",
+            "passed": true
+          },
+          {
+            "name": "Nome vazio é rejeitado e nome longo é limitado",
+            "passed": true
+          },
+          {
+            "name": "Cuidado debita 15 de ouro e adiciona seis de afinidade",
+            "passed": true
+          },
+          {
+            "name": "Cuidado sem ouro falha sem mutar a raiz",
+            "passed": true
+          },
+          {
+            "name": "Cooldown impede cliques repetidos e persiste no backup",
+            "passed": true
+          },
+          {
+            "name": "Cuidado não ultrapassa 100 e não cobra no máximo",
+            "passed": true
+          },
+          {
+            "name": "Relógio anterior ao acolhimento impede cuidado",
+            "passed": true
+          },
+          {
+            "name": "Treino debita a essência sem alterar ouro",
+            "passed": true
+          },
+          {
+            "name": "Treino sem essência falha atomicamente",
+            "passed": true
+          },
+          {
+            "name": "Treino exige núcleo desperto",
+            "passed": true
+          },
+          {
+            "name": "Somente uma sessão de treino pode existir",
+            "passed": true
+          },
+          {
+            "name": "Treino não pode ser coletado antes do prazo",
+            "passed": true
+          },
+          {
+            "name": "Concluir treino sobe de nível e preserva potencial/linhagem",
+            "passed": true
+          },
+          {
+            "name": "Coleta repetida é rejeitada sem recompensa dupla",
+            "passed": true
+          },
+          {
+            "name": "Fechar e importar não reinicia nem perde treino",
+            "passed": true
+          },
+          {
+            "name": "Treino do indivíduo A não é recebido por B",
+            "passed": true
+          },
+          {
+            "name": "Nível máximo não consome essência",
+            "passed": true
+          },
+          {
+            "name": "XP excedente é mantido e cálculo de níveis funciona",
+            "passed": true
+          },
+          {
+            "name": "Ganhos de XP têm teto e não diminuem nível legado",
+            "passed": true
+          },
+          {
+            "name": "Operações funcionam sobre entrada congelada (imutabilidade)",
+            "passed": true
+          },
+          {
+            "name": "Validação elimina duplicados após normalização do ID",
+            "passed": true
+          },
+          {
+            "name": "Espécies futuras são preservadas para evitar perda de progresso",
+            "passed": true
+          },
+          {
+            "name": "Linhagem inconsistente é normalizada para 100%",
+            "passed": true
+          },
+          {
+            "name": "Valores não finitos, negativos e nomes inválidos são saneados",
+            "passed": true
+          },
+          {
+            "name": "Companheiro e treino fantasmas são removidos",
+            "passed": true
+          },
+          {
+            "name": "Treino inválido não gera recompensa",
+            "passed": true
+          },
+          {
+            "name": "Validação de estágio 2 permanece estável quando não há santuário",
+            "passed": true
+          },
+          {
+            "name": "ARENA5 preserva todos os campos novos, inclusive cooldowns",
+            "passed": true
+          },
+          {
+            "name": "Migração ARENA3 continua funcionando sem perda",
+            "passed": true
+          },
+          {
+            "name": "Checkpoint 3 preserva bytes v5 uma única vez",
+            "passed": true
+          },
+          {
+            "name": "Quota cheia mantém coleção válida na memória",
+            "passed": true
+          },
+          {
+            "name": "Merge do combate não apaga coleção, santuário ou treino",
+            "passed": true
+          },
+          {
+            "name": "Acolhimento não aumenta dano, vida ou vigor do gladiador",
+            "passed": true
+          },
+          {
+            "name": "Fluxo de cultivo não incorpora bônus de feras antecipadamente",
+            "passed": true
+          },
+          {
+            "name": "Todas as artes originais e arquivos de combate continuam intactos",
+            "passed": true
+          },
+          {
+            "name": "Build continua único HTML sem módulos/fonte externa",
+            "passed": true
+          }
+        ]
+      },
+      {
+        "stage": 4,
+        "passed": 90,
+        "failed": 0,
+        "tests": [
+          {
+            "name": "Etapa 4 e versão registradas",
+            "passed": true
+          },
+          {
+            "name": "Quatro rotas com oito espécies catalogadas",
+            "passed": true
+          },
+          {
+            "name": "Quatro paisagens e faixas de perigo diferentes",
+            "passed": true
+          },
+          {
+            "name": "Expedições começam bloqueadas na dormência",
+            "passed": true
+          },
+          {
+            "name": "Primeiro habitat abre ao despertar",
+            "passed": true
+          },
+          {
+            "name": "Requisitos progressivos 2, 4 e 6 sucessos",
+            "passed": true
+          },
+          {
+            "name": "Campanha antiga libera rotas sem apagar progresso",
+            "passed": true
+          },
+          {
+            "name": "Região desconhecida é rejeitada",
+            "passed": true
+          },
+          {
+            "name": "Relógio inválido não cria ticket",
+            "passed": true
+          },
+          {
+            "name": "Ticket é imutável no save anterior",
+            "passed": true
+          },
+          {
+            "name": "Avistar registra espécie sem conceder animal",
+            "passed": true
+          },
+          {
+            "name": "Abrir não cobra ouro nem essência",
+            "passed": true
+          },
+          {
+            "name": "Indivíduo selvagem é gerado antes do pacto",
+            "passed": true
+          },
+          {
+            "name": "Recarregar não gera candidato novo",
+            "passed": true
+          },
+          {
+            "name": "Renomear gladiador não muda rolagem do próximo encontro",
+            "passed": true
+          },
+          {
+            "name": "Uma única expedição pode ficar pendente",
+            "passed": true
+          },
+          {
+            "name": "Capacidade do santuário é respeitada antes da saída",
+            "passed": true
+          },
+          {
+            "name": "128 encontros diferentes preservam IDs únicos",
+            "passed": true
+          },
+          {
+            "name": "Ticket completa roundtrip em ARENA5",
+            "passed": true
+          },
+          {
+            "name": "Save v3 migra sem receber captura gratuita",
+            "passed": true
+          },
+          {
+            "name": "Checkpoint da etapa 3 é preservado antes da etapa 4",
+            "passed": true
+          },
+          {
+            "name": "Atualizar checkpoint não altera moedas ou linhagem",
+            "passed": true
+          },
+          {
+            "name": "Checkpoint de ticket alheio é rejeitado",
+            "passed": true
+          },
+          {
+            "name": "Save inválido não conserva região ou espécie forjada",
+            "passed": true
+          },
+          {
+            "name": "Validação limita vida, vontade, contadores e pulsos",
+            "passed": true
+          },
+          {
+            "name": "Histórico evita IDs repetidos e fica limitado a 16",
+            "passed": true
+          },
+          {
+            "name": "Composição preserva atributos marciais",
+            "passed": true
+          },
+          {
+            "name": "Mover é contínuo e não causa dano à distância",
+            "passed": true
+          },
+          {
+            "name": "Ataque sem vigor não inicia",
+            "passed": true
+          },
+          {
+            "name": "Primeiro quadro de preparo não causa dano",
+            "passed": true
+          },
+          {
+            "name": "Pyrofang: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Stormhawk: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Stoneback: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Tideclaw: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Thornstag: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Nightlynx: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Sunmane: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Mistwyrm: lâmina atinge anatomia real",
+            "passed": true
+          },
+          {
+            "name": "Pyrofang: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Stormhawk: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Stoneback: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Tideclaw: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Thornstag: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Nightlynx: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Sunmane: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Mistwyrm: IA se aproxima e pode vencer jogador parado",
+            "passed": true
+          },
+          {
+            "name": "Oito anatomias têm zonas distintas de corpo e cabeça",
+            "passed": true
+          },
+          {
+            "name": "Pesado reduz mais vontade e causa mais dano",
+            "passed": true
+          },
+          {
+            "name": "Guarda mineral reduz dano leve",
+            "passed": true
+          },
+          {
+            "name": "Foco consome 18 vigor, reduz vontade sem ferir",
+            "passed": true
+          },
+          {
+            "name": "Foco distante não consome vigor",
+            "passed": true
+          },
+          {
+            "name": "Foco tem recarga e não permite spam",
+            "passed": true
+          },
+          {
+            "name": "Dano interrompe canalização",
+            "passed": true
+          },
+          {
+            "name": "Salto tem altura real e aterrissa",
+            "passed": true
+          },
+          {
+            "name": "Esquiva move e torna jogador invulnerável",
+            "passed": true
+          },
+          {
+            "name": "Fúria usa barra da arena, não poderes de feras",
+            "passed": true
+          },
+          {
+            "name": "Pausa congela animais, gladiador e projéteis",
+            "passed": true
+          },
+          {
+            "name": "Besta invulnerável fictícia nunca produz dano automático",
+            "passed": true
+          },
+          {
+            "name": "Subjugação requer vida, vontade, distância e núcleo",
+            "passed": true
+          },
+          {
+            "name": "Zerar vida derrota e não captura",
+            "passed": true
+          },
+          {
+            "name": "Física para durante confronto espiritual",
+            "passed": true
+          },
+          {
+            "name": "Três pulsos centrais firmam pacto sem aleatoriedade",
+            "passed": true
+          },
+          {
+            "name": "Pausa também congela agulha",
+            "passed": true
+          },
+          {
+            "name": "Precisão e compatibilidade têm efeitos separados",
+            "passed": true
+          },
+          {
+            "name": "Dez segundos sem selar contabiliza erro",
+            "passed": true
+          },
+          {
+            "name": "Falha retoma combate e aumenta vontade, sem recompensa",
+            "passed": true
+          },
+          {
+            "name": "Terceira rejeição faz a fera escapar",
+            "passed": true
+          },
+          {
+            "name": "Resultado terminal não muda com cliques repetidos",
+            "passed": true
+          },
+          {
+            "name": "Retirar-se não depende de vencer",
+            "passed": true
+          },
+          {
+            "name": "Retomar recupera vida, vontade e tentativas",
+            "passed": true
+          },
+          {
+            "name": "Retomar preserva pulsos já selados",
+            "passed": true
+          },
+          {
+            "name": "Resultado pendente pode ser registrado após fechar",
+            "passed": true
+          },
+          {
+            "name": "Captura preserva potencial, linhagem, nível e seed do encontro",
+            "passed": true
+          },
+          {
+            "name": "Captura premia ouro e essência e encerra ticket",
+            "passed": true
+          },
+          {
+            "name": "Registro duplicado não concede segunda captura/recompensa",
+            "passed": true
+          },
+          {
+            "name": "Captura não avança arenas, talentos, nível ou assimilação",
+            "passed": true
+          },
+          {
+            "name": "Linhagem dos companheiros anteriores não muda",
+            "passed": true
+          },
+          {
+            "name": "Pacto forjado com vida alta não é aceito",
+            "passed": true
+          },
+          {
+            "name": "Pacto forjado com vontade alta não é aceito",
+            "passed": true
+          },
+          {
+            "name": "Pulsos insuficientes ou fracos não concedem fera",
+            "passed": true
+          },
+          {
+            "name": "Incoerência entre fase e resultado é rejeitada",
+            "passed": true
+          },
+          {
+            "name": "Capacidade cheia durante o combate evita truncar coleção",
+            "passed": true
+          },
+          {
+            "name": "retreated: sem perda de ouro nem recompensa",
+            "passed": true
+          },
+          {
+            "name": "escaped: sem perda de ouro nem recompensa",
+            "passed": true
+          },
+          {
+            "name": "lost: sem perda de ouro nem recompensa",
+            "passed": true
+          },
+          {
+            "name": "Vitória sem captura conta rota e não cria indivíduo",
+            "passed": true
+          },
+          {
+            "name": "Contabilização de captura não altera núcleo/meridianos",
+            "passed": true
+          },
+          {
+            "name": "Validação e adaptação preservam expedição em andamento",
+            "passed": true
+          },
+          {
+            "name": "Arte original e motor da arena permanecem idênticos",
+            "passed": true
+          },
+          {
+            "name": "HTML contém todos os módulos e proíbe chamadas externas",
+            "passed": true
+          }
+        ]
+      }
+    ]
+  },
+  "browser": {
+    "passed": 161,
+    "failed": 0,
+    "regressionStage3": {
+      "mode": "HTML autocontido real carregado em blocos em about:blank; rede bloqueada; localStorage/Date.now controlados. Navegação file:// bloqueada pelo ambiente. Sem teste em Windows físico.",
+      "passed": 77,
+      "failed": 0,
+      "errors": [],
+      "externalRequests": [],
+      "tests": [
+        {
+          "name": "Build mantém recursos da etapa 3",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Capa ilustrada preservada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Cidade original preservada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Santuário aparece na navegação",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Três candidatas desenhadas em SVG",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Dormência bloqueia acolhimento",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Despertar não altera personagem",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Núcleo do personagem não é sorteado novamente",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Acolhimento liberado após despertar",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Cancelar não concede fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Uma única fera acolhida",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Linhagem soma 100%",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Afinidade inicial 10 e domínio zero",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Sem segunda oferta de acolhimento",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Fera é companheira de pátio, não assimilada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Cancelar cuidado não cobra ouro",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Cuidado debita ouro e aumenta afinidade",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Cooldown bloqueia repetição",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Nome Unicode salvo sem perder genética",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recolher mantém coleção",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Selecionar companheiro não altera assimilação",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Treino custa 28 essência, sem gasto de ouro",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Uma sessão persistida, sem XP antecipado",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Coleta antes do prazo bloqueada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Segundo treino bloqueado",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Prazo libera conclusão",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "XP real sobe nível e afinidade",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recompensa não pode ser coletada novamente",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Nível da fera não sobe domínio",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Oito registros no bestiário",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Silhueta de espécie não estudada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 01 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 01: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 02 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 02: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 03 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 03: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 04 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 04: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 05 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 05: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 06 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 06: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 07 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 07: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Registro 08 estudado sem conceder fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie 08: contornos desenhados",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Oito anatomias diferentes no renderer",
+          "passed": true,
+          "detail": [
+            "wolf",
+            "raptor",
+            "tortoise",
+            "salamander",
+            "stag",
+            "lynx",
+            "lion",
+            "wyrm"
+          ]
+        },
+        {
+          "name": "Pesquisa encontra Stormhawk",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Pesquisa vazia informa corretamente",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Filtro acolhidos só mostra espécie própria",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Filtro estudados mostra oito consultadas",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Animação altera pixels entre frames",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Movimento não depende de ataques ou cliques repetidos",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Efeitos reduzidos suspendem animações",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Exportação inclui coleção e registros novos",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Backup preserva companhia e semente",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Seis ações originais de combate",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Teclado causa dano com arma articulada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Pausa preservada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Combate não apaga feras ou bestiário",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Reabrir backup mantém fera nível 2 e registros",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Importação automática de v3 mantém progresso",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Espécie futura preservada sem travar a ficha",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Quota indisponível mostra aviso e preserva sessão",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Backup recupera ação retida em memória",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Conflito de outra aba bloqueia gasto",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 1366x768: Minhas feras",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 1366x768: Compêndio",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 1024x768: Minhas feras",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 1024x768: Compêndio",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 390x844: Minhas feras",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 390x844: Compêndio",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 844x390: Minhas feras",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Layout 844x390: Compêndio",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Sem erros JavaScript",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "Zero solicitações externas",
+          "passed": true,
+          "detail": []
+        }
+      ]
+    },
+    "stage4": {
+      "suite": "Etapa 4 — Terras Selvagens, UI real em Chromium",
+      "passed": 84,
+      "failed": 0,
+      "checks": [
+        {
+          "name": "Build atual identifica Etapa 4",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Atlas tem quatro paisagens SVG originais",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Núcleo adormecido bloqueia Bosque Viridiano",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Núcleo adormecido bloqueia Terras Rubras",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Núcleo adormecido bloqueia Picos da Tormenta",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Núcleo adormecido bloqueia Ruínas do Eclipse",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Sem expedição ou fera automaticamente concedida",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Despertar libera primeiro habitat",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Despertar mantém rotas avançadas bloqueadas",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Entrada inicia combate real",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Ticket e genética persistidos antes do combate",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Encontrar revela espécie sem adicionar à coleção",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Arena clássica não foi substituída",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Gladiador em Canvas e fera vetorial separada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Desenho da fera possui membros e contornos",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Fera tem movimento visível, não emoji estático",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Esc abre pausa com simulação parada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Teclado move personagem na expedição",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Pausa não avança tempo de combate",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Ações com teclado consomem vigor",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Arquivo reaberto oferece mesmo encontro",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Nenhuma região pode sortear outro encontro pendente",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Reabrir mantém ID e genética",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Vida retomada não se cura ao recarregar",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recuo produz resultado explícito",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recuo limpa ticket sem recompensa",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recuo registrado no diário",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Vida e vontade baixas liberam subjugação",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "B inicia confronto com três pulsos",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Confronto espiritual suspende HP físico",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Bônus de compatibilidade exibido",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Primeiro pulso é persistido",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Três bons pulsos estabelecem pacto",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Antes de registrar, não há recompensa antecipada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Indivíduo capturado é o mesmo do encontro",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Captura mantém companhia anterior e sem assimilação",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Ouro de rota 1 adicionado exatamente uma vez",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Essência de rota 1 adicionado exatamente uma vez",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Campanha marcial não avança por captura",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Ticket consumido após transação",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Não é possível registrar duas vezes pela interface",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Diário informa captura",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Captura aparece na coleção",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Backup inclui feras e histórico selvagem",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Confronto espiritual pode ser retomado",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Pulsos não são apagados ao reabrir",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Recuar durante selo é seguro",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Terceira rejeição termina em fuga",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Fuga não concede fera",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Resultado capturado pode ser registrado após reabrir",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Falha no disco não repete botão de coleta",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Falha de gravação é avisada",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Backup conserva captura mantida em memória",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Foco não causa dano físico",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Foco reduz vontade ou é interrompido por contra-ataque",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Ataque fora de alcance não causa dano remoto",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Golpes de teclado acertam fera quando próxima",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "bosque: ambiente e criatura carregam",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "rubras: ambiente e criatura carregam",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "picos: ambiente e criatura carregam",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "eclipse: ambiente e criatura carregam",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1366x768: atlas sem overflow horizontal",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1366x768: canvas tem área jogável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1366x768: controles cabem na tela",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1366x768: Focar é acionável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1366x768: pausa e retorno acessíveis",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1024x768: atlas sem overflow horizontal",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1024x768: canvas tem área jogável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1024x768: controles cabem na tela",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1024x768: Focar é acionável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "1024x768: pausa e retorno acessíveis",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "390x844: atlas sem overflow horizontal",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "390x844: canvas tem área jogável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "390x844: controles cabem na tela",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "390x844: Focar é acionável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "390x844: pausa e retorno acessíveis",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "844x390: atlas sem overflow horizontal",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "844x390: canvas tem área jogável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "844x390: controles cabem na tela",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "844x390: Focar é acionável",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "844x390: pausa e retorno acessíveis",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Experiência de expedições abre quatro rotas",
+          "passed": true,
+          "detail": null
+        },
+        {
+          "name": "Sem erros de execução JavaScript",
+          "passed": true,
+          "detail": []
+        },
+        {
+          "name": "Sem pedidos HTTP externos",
+          "passed": true,
+          "detail": []
+        }
+      ],
+      "errors": [],
+      "externalRequests": [],
+      "method": "Exact HTML document injection, Chromium; simulated localStorage and frozen wall clock, real requestAnimationFrame and keyboard; file:// disallowed by hosted browser policy; no physical Windows/iPhone test."
+    }
+  },
+  "preservation": [
+    {
+      "file": "src/helpers/ArenaEngine.tsx",
+      "sha256": "a59f6915a7b12270970a5adf0ae18bec6e27f69cf3d51c1d29a57e0195ce622b",
+      "unchanged": true
+    },
+    {
+      "file": "src/helpers/ArenaCharacter.tsx",
+      "sha256": "1a9ba7bc5aaede98cdf9525ae5cab43080a074b8f42669bceaf95eb197a2fd05",
+      "unchanged": true
+    },
+    {
+      "file": "src/helpers/ArenaRenderer.tsx",
+      "sha256": "f6fd09a7d13db7e7a61839fc646b359025acd138829a43d9c1410ca8637a3404",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ArenaBattle.tsx",
+      "sha256": "da2d82b3d42ae194343a79a0d758c373ec935746b404a93899fd7201ee9b26bd",
+      "unchanged": true
+    },
+    {
+      "file": "src/components/ArenaBattle.module.css",
+      "sha256": "14d4df30c036d8b81ffab97c15748d23a3bd548ed33bce39c7de9f50936ceb60",
+      "unchanged": true
+    },
+    {
+      "file": "assets/3d97d210-6ba0-408b-816a-0b37143f46e7.png",
+      "sha256": "c759424c6ed6b207638307af81909718113ac3f0a904ca47bacf381367c9d761",
+      "unchanged": true
+    },
+    {
+      "file": "assets/e2eda776-2e85-44ba-a900-2cbd8d71227c.png",
+      "sha256": "5fedfc1638f31ec2f1d643b1257593662dcb57b83097c102309724deed053756",
+      "unchanged": true
+    },
+    {
+      "file": "assets/2aabd9ae-6795-426a-ba49-1050f185884c.png",
+      "sha256": "7934f11a0fa26248248c9e84db4a2fe77d9f4bde4bc0dd6c5d1a58044bf388fd",
+      "unchanged": true
+    },
+    {
+      "file": "assets/a7c9cb85-cad4-4903-bf03-9dcf780ee7fb.png",
+      "sha256": "823be2ab304513cfca32a2a7a9e5fbb85f05fae38b0c428b917c696286c384b2",
+      "unchanged": true
+    },
+    {
+      "file": "assets/cfe53118-324d-4182-baf0-cac707da1950.png",
+      "sha256": "6c3ec76a8f89da806b6d2a05828604c2759817962ca4189c2d9a0aa05eb4672a",
+      "unchanged": true
+    },
+    {
+      "file": "assets/d9bfc547-530d-45bf-b40a-c06b509a5e9e.png",
+      "sha256": "343a3a25f9d8ece480bd2277f549e89f770025e429868d50b85db5224c159cfd",
+      "unchanged": true
+    },
+    {
+      "file": "assets/a47a8fa1-31e6-4783-94c8-6616173c090a.png",
+      "sha256": "07e7e9fe20302ef8547d6dae9ca81bfa1d5999319f2505468903a36cbfb83b2d",
+      "unchanged": true
+    },
+    {
+      "file": "assets/802c63f2-7caf-44c8-9166-7c540ce11958.png",
+      "sha256": "430efac33be383870919e81914f086e78d6436941865eda399b2cc845638d6a0",
+      "unchanged": true
+    },
+    {
+      "file": "assets/96ba1505-ebc3-4540-b180-beb91e10a003.png",
+      "sha256": "fa89a4516a9aab16769b0da2001ac95726f31822841e5c6c99dd99beb9907f47",
+      "unchanged": true
+    }
+  ],
+  "limits": [
+    "Navegação file:// bloqueada pelo ambiente; HTML real carregado em documento Chromium isolado.",
+    "localStorage e relógio civil controlados nos testes; requestAnimationFrame, UI, teclas e colisão reais.",
+    "Sem teste em um Windows físico ou iPhone real.",
+    "Checkpoints da batalha a cada 2 segundos; retomada conserva dados mas não reproduz todos os subframes.",
+    "Roteiro por habitats, não mundo aberto; sem assimilação/evolução nesta etapa.",
+    "Floot não republicado; branch principal preservada."
+  ]
+}

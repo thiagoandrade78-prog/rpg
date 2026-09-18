@@ -1,0 +1,367 @@
+{
+  "stage": 4,
+  "passed": 90,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Etapa 4 e versão registradas",
+      "passed": true
+    },
+    {
+      "name": "Quatro rotas com oito espécies catalogadas",
+      "passed": true
+    },
+    {
+      "name": "Quatro paisagens e faixas de perigo diferentes",
+      "passed": true
+    },
+    {
+      "name": "Expedições começam bloqueadas na dormência",
+      "passed": true
+    },
+    {
+      "name": "Primeiro habitat abre ao despertar",
+      "passed": true
+    },
+    {
+      "name": "Requisitos progressivos 2, 4 e 6 sucessos",
+      "passed": true
+    },
+    {
+      "name": "Campanha antiga libera rotas sem apagar progresso",
+      "passed": true
+    },
+    {
+      "name": "Região desconhecida é rejeitada",
+      "passed": true
+    },
+    {
+      "name": "Relógio inválido não cria ticket",
+      "passed": true
+    },
+    {
+      "name": "Ticket é imutável no save anterior",
+      "passed": true
+    },
+    {
+      "name": "Avistar registra espécie sem conceder animal",
+      "passed": true
+    },
+    {
+      "name": "Abrir não cobra ouro nem essência",
+      "passed": true
+    },
+    {
+      "name": "Indivíduo selvagem é gerado antes do pacto",
+      "passed": true
+    },
+    {
+      "name": "Recarregar não gera candidato novo",
+      "passed": true
+    },
+    {
+      "name": "Renomear gladiador não muda rolagem do próximo encontro",
+      "passed": true
+    },
+    {
+      "name": "Uma única expedição pode ficar pendente",
+      "passed": true
+    },
+    {
+      "name": "Capacidade do santuário é respeitada antes da saída",
+      "passed": true
+    },
+    {
+      "name": "128 encontros diferentes preservam IDs únicos",
+      "passed": true
+    },
+    {
+      "name": "Ticket completa roundtrip em ARENA5",
+      "passed": true
+    },
+    {
+      "name": "Save v3 migra sem receber captura gratuita",
+      "passed": true
+    },
+    {
+      "name": "Checkpoint da etapa 3 é preservado antes da etapa 4",
+      "passed": true
+    },
+    {
+      "name": "Atualizar checkpoint não altera moedas ou linhagem",
+      "passed": true
+    },
+    {
+      "name": "Checkpoint de ticket alheio é rejeitado",
+      "passed": true
+    },
+    {
+      "name": "Save inválido não conserva região ou espécie forjada",
+      "passed": true
+    },
+    {
+      "name": "Validação limita vida, vontade, contadores e pulsos",
+      "passed": true
+    },
+    {
+      "name": "Histórico evita IDs repetidos e fica limitado a 16",
+      "passed": true
+    },
+    {
+      "name": "Composição preserva atributos marciais",
+      "passed": true
+    },
+    {
+      "name": "Mover é contínuo e não causa dano à distância",
+      "passed": true
+    },
+    {
+      "name": "Ataque sem vigor não inicia",
+      "passed": true
+    },
+    {
+      "name": "Primeiro quadro de preparo não causa dano",
+      "passed": true
+    },
+    {
+      "name": "Pyrofang: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Stormhawk: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Stoneback: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Tideclaw: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Thornstag: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Nightlynx: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Sunmane: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Mistwyrm: lâmina atinge anatomia real",
+      "passed": true
+    },
+    {
+      "name": "Pyrofang: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Stormhawk: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Stoneback: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Tideclaw: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Thornstag: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Nightlynx: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Sunmane: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Mistwyrm: IA se aproxima e pode vencer jogador parado",
+      "passed": true
+    },
+    {
+      "name": "Oito anatomias têm zonas distintas de corpo e cabeça",
+      "passed": true
+    },
+    {
+      "name": "Pesado reduz mais vontade e causa mais dano",
+      "passed": true
+    },
+    {
+      "name": "Guarda mineral reduz dano leve",
+      "passed": true
+    },
+    {
+      "name": "Foco consome 18 vigor, reduz vontade sem ferir",
+      "passed": true
+    },
+    {
+      "name": "Foco distante não consome vigor",
+      "passed": true
+    },
+    {
+      "name": "Foco tem recarga e não permite spam",
+      "passed": true
+    },
+    {
+      "name": "Dano interrompe canalização",
+      "passed": true
+    },
+    {
+      "name": "Salto tem altura real e aterrissa",
+      "passed": true
+    },
+    {
+      "name": "Esquiva move e torna jogador invulnerável",
+      "passed": true
+    },
+    {
+      "name": "Fúria usa barra da arena, não poderes de feras",
+      "passed": true
+    },
+    {
+      "name": "Pausa congela animais, gladiador e projéteis",
+      "passed": true
+    },
+    {
+      "name": "Besta invulnerável fictícia nunca produz dano automático",
+      "passed": true
+    },
+    {
+      "name": "Subjugação requer vida, vontade, distância e núcleo",
+      "passed": true
+    },
+    {
+      "name": "Zerar vida derrota e não captura",
+      "passed": true
+    },
+    {
+      "name": "Física para durante confronto espiritual",
+      "passed": true
+    },
+    {
+      "name": "Três pulsos centrais firmam pacto sem aleatoriedade",
+      "passed": true
+    },
+    {
+      "name": "Pausa também congela agulha",
+      "passed": true
+    },
+    {
+      "name": "Precisão e compatibilidade têm efeitos separados",
+      "passed": true
+    },
+    {
+      "name": "Dez segundos sem selar contabiliza erro",
+      "passed": true
+    },
+    {
+      "name": "Falha retoma combate e aumenta vontade, sem recompensa",
+      "passed": true
+    },
+    {
+      "name": "Terceira rejeição faz a fera escapar",
+      "passed": true
+    },
+    {
+      "name": "Resultado terminal não muda com cliques repetidos",
+      "passed": true
+    },
+    {
+      "name": "Retirar-se não depende de vencer",
+      "passed": true
+    },
+    {
+      "name": "Retomar recupera vida, vontade e tentativas",
+      "passed": true
+    },
+    {
+      "name": "Retomar preserva pulsos já selados",
+      "passed": true
+    },
+    {
+      "name": "Resultado pendente pode ser registrado após fechar",
+      "passed": true
+    },
+    {
+      "name": "Captura preserva potencial, linhagem, nível e seed do encontro",
+      "passed": true
+    },
+    {
+      "name": "Captura premia ouro e essência e encerra ticket",
+      "passed": true
+    },
+    {
+      "name": "Registro duplicado não concede segunda captura/recompensa",
+      "passed": true
+    },
+    {
+      "name": "Captura não avança arenas, talentos, nível ou assimilação",
+      "passed": true
+    },
+    {
+      "name": "Linhagem dos companheiros anteriores não muda",
+      "passed": true
+    },
+    {
+      "name": "Pacto forjado com vida alta não é aceito",
+      "passed": true
+    },
+    {
+      "name": "Pacto forjado com vontade alta não é aceito",
+      "passed": true
+    },
+    {
+      "name": "Pulsos insuficientes ou fracos não concedem fera",
+      "passed": true
+    },
+    {
+      "name": "Incoerência entre fase e resultado é rejeitada",
+      "passed": true
+    },
+    {
+      "name": "Capacidade cheia durante o combate evita truncar coleção",
+      "passed": true
+    },
+    {
+      "name": "retreated: sem perda de ouro nem recompensa",
+      "passed": true
+    },
+    {
+      "name": "escaped: sem perda de ouro nem recompensa",
+      "passed": true
+    },
+    {
+      "name": "lost: sem perda de ouro nem recompensa",
+      "passed": true
+    },
+    {
+      "name": "Vitória sem captura conta rota e não cria indivíduo",
+      "passed": true
+    },
+    {
+      "name": "Contabilização de captura não altera núcleo/meridianos",
+      "passed": true
+    },
+    {
+      "name": "Validação e adaptação preservam expedição em andamento",
+      "passed": true
+    },
+    {
+      "name": "Arte original e motor da arena permanecem idênticos",
+      "passed": true
+    },
+    {
+      "name": "HTML contém todos os módulos e proíbe chamadas externas",
+      "passed": true
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {WildWorld} from './WildWorld';
 import {ArenaData} from './ArenaData';
 import {ArenaTypes as Legacy} from './ArenaTypes';
 import {ArenaSaveTypes as T} from './ArenaSaveTypes';
@@ -12,6 +13,8 @@ function bytesEncode(value:string){return btoa(Array.from(new TextEncoder().enco
 function bytesDecode(value:string){const raw=atob(value);return new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0)));}
 export class ArenaSaveV5 {
  static readonly KEY='arena-save-v5';static readonly LEGACY_KEY='arena-save-v3';static readonly RECOVERY_KEY='arena-save-v5-recovery';
+ static readonly STAGE4_BACKUP_KEY='arena-save-v5-before-stage-4';
+ static checkpointStage4(){const raw=localStorage.getItem(this.KEY);if(raw&&!localStorage.getItem(this.STAGE4_BACKUP_KEY))localStorage.setItem(this.STAGE4_BACKUP_KEY,raw);}
  static readonly STAGE3_BACKUP_KEY='arena-save-v5-before-stage-3';
  static checkpointStage3(){const raw=localStorage.getItem(this.KEY);if(raw&&!localStorage.getItem(this.STAGE3_BACKUP_KEY))localStorage.setItem(this.STAGE3_BACKUP_KEY,raw);}
  static readonly STAGE2_BACKUP_KEY='arena-save-v5-before-stage-2';
@@ -44,7 +47,7 @@ export class ArenaSaveV5 {
   const beasts=BeastEngine.validate(v.beasts),known=beasts.collection.map(x=>x.id),assimilation=AssimilationEngine.validate(v.assimilation,known);
   const unlocked=Array.from(new Set((Array.isArray(rawWorld.unlockedRegions)?rawWorld.unlockedRegions:[]).filter(x=>typeof x==='string'&&x).map(x=>String(x).slice(0,80))));if(!unlocked.includes('velaria'))unlocked.unshift('velaria');
   const flags:Record<string,boolean>={};if(rawWorld.flags&&typeof rawWorld.flags==='object')for(const [key,val] of Object.entries(rawWorld.flags as Record<string,unknown>))if(val===true||val===false)flags[key.slice(0,80)]=val;
-  return {version:5,meta:{saveId,createdAt,updatedAt:integer(meta.updatedAt,createdAt,Number.MAX_SAFE_INTEGER,createdAt),migratedFromVersion:meta.migratedFromVersion===3?3:null},character:ArenaCharacterAdapter.characterFromLegacy(legacy,characterId),settings:{sound:legacy.sound,reducedMotion:legacy.reducedMotion},cultivation:CultivationEngine.validate(v.cultivation,`${saveId}|${characterId}`,createdAt),beasts,assimilation,world:{clearedArenaEncounters:[...legacy.cleared],unlockedRegions:unlocked,flags,campaignChapter:integer(rawWorld.campaignChapter,1,999,1)}};
+  return {version:5,meta:{saveId,createdAt,updatedAt:integer(meta.updatedAt,createdAt,Number.MAX_SAFE_INTEGER,createdAt),migratedFromVersion:meta.migratedFromVersion===3?3:null},character:ArenaCharacterAdapter.characterFromLegacy(legacy,characterId),settings:{sound:legacy.sound,reducedMotion:legacy.reducedMotion},cultivation:CultivationEngine.validate(v.cultivation,`${saveId}|${characterId}`,createdAt),beasts,assimilation,world:{clearedArenaEncounters:[...legacy.cleared],unlockedRegions:unlocked,flags,campaignChapter:integer(rawWorld.campaignChapter,1,999,1),...(rawWorld.exploration?{exploration:WildWorld.validate(rawWorld.exploration)}:{})}};
  }
  static persist(value:T.SaveV5,now=Date.now()):T.SaveV5{const valid=this.validate(value),next={...valid,meta:{...valid.meta,updatedAt:Math.max(valid.meta.createdAt,valid.meta.updatedAt,Number.isFinite(now)?now:valid.meta.updatedAt)}};localStorage.setItem(this.KEY,JSON.stringify(next));return next;}
  static load(now=Date.now()):{save:T.SaveV5;warning:string;migrated:boolean}{
@@ -54,7 +57,7 @@ export class ArenaSaveV5 {
   if(current){
    try{
     const save=this.validate(JSON.parse(current));
-    try{this.checkpointStage1();this.checkpointStage2();this.checkpointStage3();}catch{warn();}
+    try{this.checkpointStage1();this.checkpointStage2();this.checkpointStage3();this.checkpointStage4();}catch{warn();}
     return {save,warning,migrated:false};
    }catch{try{if(!localStorage.getItem(this.RECOVERY_KEY))localStorage.setItem(this.RECOVERY_KEY,current);}catch{warn();}}
   }

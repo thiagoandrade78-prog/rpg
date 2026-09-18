@@ -185,7 +185,7 @@ export const ArenaCultivation=({save,model,onAwaken,onBack,onBackup,storageWarni
   </div>}
   {tab==='roadmap'&&<div role="tabpanel" id="cult-panel-roadmap" aria-labelledby="cult-tab-roadmap" className={styles.roadmap}>
    <div className={styles.roadmapIntro}><span className={styles.eyebrow}>CRÔNICAS DA EXPANSÃO</span><h2>Da centelha ao Avatar.</h2><p>Dez entregas sobre o jogo ilustrado. As etapas 1, 2 e 3 estão disponíveis nesta versão.</p></div>
-   {ExpansionRoadmap.map(stage=><article key={stage.id} className={stage.id<=3?styles.currentStage:styles.futureStage}><span>{String(stage.id).padStart(2,'0')}</span><div><h3>{stage.title}</h3><p>{stage.detail}</p></div>{stage.id<=3?<Check size={21}/>:<Lock size={17}/>}</article>)}
+   {ExpansionRoadmap.map(stage=><article key={stage.id} className={stage.id<=4?styles.currentStage:styles.futureStage}><span>{String(stage.id).padStart(2,'0')}</span><div><h3>{stage.title}</h3><p>{stage.detail}</p></div>{stage.id<=4?<Check size={21}/>:<Lock size={17}/>}</article>)}
   </div>}
   <footer className={styles.footer}><div><Shield size={19}/><p><b>Seu progresso vem primeiro.</b> Ouro, armas, vitórias e o núcleo usam o mesmo Save v5. Antes de mudar de arquivo, guarde um código ARENA5.</p></div><Button variant="outline" onClick={onBackup}>BACKUP E AJUDA</Button></footer>
   {storageWarning&&<p role="alert" className={styles.storageWarning}>{storageWarning}</p>}

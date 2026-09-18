@@ -1,0 +1,430 @@
+{
+  "suite": "Etapa 4 — Terras Selvagens, UI real em Chromium",
+  "passed": 84,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Build atual identifica Etapa 4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Atlas tem quatro paisagens SVG originais",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo adormecido bloqueia Bosque Viridiano",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo adormecido bloqueia Terras Rubras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo adormecido bloqueia Picos da Tormenta",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo adormecido bloqueia Ruínas do Eclipse",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem expedição ou fera automaticamente concedida",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar libera primeiro habitat",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar mantém rotas avançadas bloqueadas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Entrada inicia combate real",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ticket e genética persistidos antes do combate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Encontrar revela espécie sem adicionar à coleção",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Arena clássica não foi substituída",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Gladiador em Canvas e fera vetorial separada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Desenho da fera possui membros e contornos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fera tem movimento visível, não emoji estático",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Esc abre pausa com simulação parada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Teclado move personagem na expedição",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pausa não avança tempo de combate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ações com teclado consomem vigor",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Arquivo reaberto oferece mesmo encontro",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Nenhuma região pode sortear outro encontro pendente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reabrir mantém ID e genética",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Vida retomada não se cura ao recarregar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recuo produz resultado explícito",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recuo limpa ticket sem recompensa",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recuo registrado no diário",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Vida e vontade baixas liberam subjugação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "B inicia confronto com três pulsos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Confronto espiritual suspende HP físico",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Bônus de compatibilidade exibido",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Primeiro pulso é persistido",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Três bons pulsos estabelecem pacto",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Antes de registrar, não há recompensa antecipada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Indivíduo capturado é o mesmo do encontro",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Captura mantém companhia anterior e sem assimilação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ouro de rota 1 adicionado exatamente uma vez",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Essência de rota 1 adicionado exatamente uma vez",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Campanha marcial não avança por captura",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ticket consumido após transação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Não é possível registrar duas vezes pela interface",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Diário informa captura",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Captura aparece na coleção",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup inclui feras e histórico selvagem",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Confronto espiritual pode ser retomado",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pulsos não são apagados ao reabrir",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recuar durante selo é seguro",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Terceira rejeição termina em fuga",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fuga não concede fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Resultado capturado pode ser registrado após reabrir",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Falha no disco não repete botão de coleta",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Falha de gravação é avisada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup conserva captura mantida em memória",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Foco não causa dano físico",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Foco reduz vontade ou é interrompido por contra-ataque",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Ataque fora de alcance não causa dano remoto",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Golpes de teclado acertam fera quando próxima",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bosque: ambiente e criatura carregam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "rubras: ambiente e criatura carregam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "picos: ambiente e criatura carregam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "eclipse: ambiente e criatura carregam",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1366x768: atlas sem overflow horizontal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1366x768: canvas tem área jogável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1366x768: controles cabem na tela",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1366x768: Focar é acionável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1366x768: pausa e retorno acessíveis",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1024x768: atlas sem overflow horizontal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1024x768: canvas tem área jogável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1024x768: controles cabem na tela",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1024x768: Focar é acionável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1024x768: pausa e retorno acessíveis",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844: atlas sem overflow horizontal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844: canvas tem área jogável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844: controles cabem na tela",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844: Focar é acionável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "390x844: pausa e retorno acessíveis",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390: atlas sem overflow horizontal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390: canvas tem área jogável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390: controles cabem na tela",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390: Focar é acionável",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "844x390: pausa e retorno acessíveis",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Experiência de expedições abre quatro rotas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem erros de execução JavaScript",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Sem pedidos HTTP externos",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "method": "Exact HTML document injection, Chromium; simulated localStorage and frozen wall clock, real requestAnimationFrame and keyboard; file:// disallowed by hosted browser policy; no physical Windows/iPhone test."
+}

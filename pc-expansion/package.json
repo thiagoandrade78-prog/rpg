@@ -1,13 +1,13 @@
 {
   "name": "arena-filhos-da-areia-pc",
-  "version": "5.0.0-alpha.3",
+  "version": "5.0.0-alpha.4",
   "private": true,
-  "description": "Illustrated ARENA for PC: stage 3, spirit beasts and sanctuary",
+  "description": "Illustrated ARENA for PC: stage 4, wild expeditions and capture",
   "scripts": {
     "build": "node scripts/build.cjs",
-    "test": "node tests/logic.cjs && node tests/expansion-stage1.cjs && node tests/expansion-stage2.cjs && node tests/expansion-stage3.cjs",
+    "test": "node tests/logic.cjs && node tests/expansion-stage1.cjs && node tests/expansion-stage2.cjs && node tests/expansion-stage3.cjs && node tests/expansion-stage4.cjs",
     "typecheck": "tsc --noEmit",
-    "test:browser": "python tests/browser_stage3.py"
+    "test:browser": "python tests/browser_stage4.py"
   },
   "dependencies": {
     "@radix-ui/react-slot": "1.2.3",

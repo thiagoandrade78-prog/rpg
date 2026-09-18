@@ -4,6 +4,11 @@ import {Button} from '../components/Button';
 import {Input} from '../components/Input';
 import {ArenaPortrait} from '../components/ArenaPortrait';
 import {ArenaCultivation} from '../components/ArenaCultivation';
+import {ArenaExpeditions} from '../components/ArenaExpeditions';
+import {ArenaWildBattle} from '../components/ArenaWildBattle';
+import {WildWorld} from '../helpers/WildWorld';
+import {WildCheckpoint,WildResolution,WildTicket} from '../helpers/WildTypes';
+import {ArenaSaveTypes} from '../helpers/ArenaSaveTypes';
 import {ArenaBeasts} from '../components/ArenaBeasts';
 import {BeastSanctuary,BeastCommand} from '../helpers/BeastSanctuary';
 import {ArenaExpansion} from '../helpers/ArenaExpansion';
@@ -19,7 +24,7 @@ import {ArenaSaveV5} from '../helpers/ArenaSaveV5';
 import {ArenaCharacterAdapter} from '../helpers/ArenaCharacterAdapter';
 import {Swords,Shield,Crown,Coins,Flame,ArrowLeft,ArrowRight,Check,Lock,Settings,Download,Copy,Home,Map,ShoppingBag,User,BookOpen,Heart,Zap,Target,ChevronRight,Volume2,VolumeX,Award,Play,Compass,PawPrint} from 'lucide-react';
 import styles from './_index.module.css';
-type Screen='home'|'create'|'camp'|'map'|'gear'|'shop'|'train'|'help'|'reward'|'cultivation'|'beasts';
+type Screen='home'|'create'|'camp'|'map'|'gear'|'shop'|'train'|'help'|'reward'|'cultivation'|'beasts'|'expeditions';
 type RewardView=ReturnType<typeof D.reward>&{result:T.Result};
 const slotNames:Record<T.Slot,string>={weapon:'Armas',helmet:'Elmos',armor:'Armaduras',shield:'Escudos'};
 const statNames={power:'Força',vitality:'Vitalidade',endurance:'Resistência',agility:'Agilidade'};
@@ -34,6 +39,8 @@ export default function Index(){
  const [save,setSave]=useState<T.Save>(initialLegacy);const v5Ref=useRef(initial.save);
  const [cultivation,setCultivation]=useState(initial.save.cultivation);
  const [beasts,setBeasts]=useState(initial.save.beasts);
+ const [world,setWorld]=useState(initial.save.world);
+ const [wild,setWild]=useState<{root:ArenaSaveTypes.SaveV5;ticket:WildTicket}|null>(null);
  const [offlineReport,setOfflineReport]=useState<FlowReceipt|null>(initial.receipt.elapsedMs>=60000?initial.receipt:null);
  const [clockWarning,setClockWarning]=useState(initial.receipt.clockBackwards);
  const latestSave=useRef(save);latestSave.current=save;
@@ -98,6 +105,28 @@ export default function Index(){
    setNotice(result.message);return true;
   }catch(error){setNotice(error instanceof Error?error.message:'Ação de santuário não concluída.');return false;}
  }
+ function commitWorld(root:ArenaSaveTypes.SaveV5){
+  v5Ref.current=root;latestSave.current=ArenaCharacterAdapter.toLegacy(root);
+  setSave(latestSave.current);setWorld(root.world);setBeasts(root.beasts);setCultivation(root.cultivation);
+  try{v5Ref.current=ArenaSaveV5.persist(root);lastFlush.current=Date.now();setStorageWarning('');}
+  catch{setStorageWarning('Expedição preservada nesta sessão. Falha ao gravar: exporte um backup antes de fechar.');}
+ }
+ function openExpedition(region:string){
+  if(syncBlocked.current){setNotice('Reabra o jogo em uma única aba.');return;}
+  try{const result=WildWorld.open(currentV5(),region);commitWorld(result.save);setWild({root:result.save,ticket:result.ticket});}
+  catch(e){setNotice(e instanceof Error?e.message:'Não foi possível explorar.');}
+ }
+ function resumeExpedition(){const root=currentV5(),ticket=WildWorld.state(root).pending;if(!ticket||syncBlocked.current)return;setWild({root,ticket});}
+ function wildCheckpoint(id:string,cp:WildCheckpoint){
+  if(syncBlocked.current||WildWorld.state(v5Ref.current).pending?.id!==id)return;
+  try{const root=WildWorld.update(ArenaCharacterAdapter.mergeLegacy(v5Ref.current,latestSave.current),id,cp);v5Ref.current=root;setWorld(root.world);v5Ref.current=ArenaSaveV5.persist(root);}
+  catch{setStorageWarning('Registro da expedição está em memória; o armazenamento falhou. Exporte um backup.');}
+ }
+ function finishWild(result:WildResolution):boolean{
+  if(syncBlocked.current)return false;
+  try{const next=WildWorld.finish(currentV5(),result);commitWorld(next.save);return true;}
+  catch(e){setNotice(e instanceof Error?e.message:'Resultado não registrado.');return false;}
+ }
  function cultivate(action:CultivationCommand){
   if(syncBlocked.current){setNotice('Reabra o jogo em uma única aba antes de continuar.');return;}
   const root=settleFlow(true);
@@ -114,16 +143,16 @@ export default function Index(){
  }
  function exportSave(){const root=currentV5(),code=ArenaSaveV5.encode(root);setBackup(code);const blob=new Blob([JSON.stringify(root,null,2)],{type:'application/json'});const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download='arena-save-v5.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);setNotice('Backup v5 exportado. O código também está disponível abaixo.');}
  async function copySave(){const code=ArenaSaveV5.encode(currentV5());setBackup(code);try{await navigator.clipboard.writeText(code);setNotice('Código ARENA5 de recuperação copiado.');}catch{setNotice('Selecione e copie o código no campo abaixo.');}}
- function importSave(){try{const decoded=ArenaSaveV5.decode(backup),resumed=ArenaExpansion.settle(decoded),data=resumed.save;v5Ref.current=ArenaSaveV5.persist(data);syncBlocked.current=false;setOfflineReport(resumed.receipt.elapsedMs>=60000?resumed.receipt:null);setClockWarning(resumed.receipt.clockBackwards);setCultivation(data.cultivation);setBeasts(data.beasts);latestSave.current=ArenaCharacterAdapter.toLegacy(data);setSave(latestSave.current);setConfirmImport(false);setNotice(data.meta.migratedFromVersion===3?'Backup ARENA3 migrado e recuperado no Save v5.':'Gladiador v5 recuperado com sucesso.');go('camp');}catch(e){setNotice(e instanceof Error?e.message:'Código de recuperação inválido.');}}
+ function importSave(){try{const decoded=ArenaSaveV5.decode(backup),resumed=ArenaExpansion.settle(decoded),data=resumed.save;v5Ref.current=ArenaSaveV5.persist(data);syncBlocked.current=false;setOfflineReport(resumed.receipt.elapsedMs>=60000?resumed.receipt:null);setClockWarning(resumed.receipt.clockBackwards);setCultivation(data.cultivation);setBeasts(data.beasts);setWorld(data.world);latestSave.current=ArenaCharacterAdapter.toLegacy(data);setSave(latestSave.current);setConfirmImport(false);setNotice(data.meta.migratedFromVersion===3?'Backup ARENA3 migrado e recuperado no Save v5.':'Gladiador v5 recuperado com sucesso.');go('camp');}catch(e){setNotice(e instanceof Error?e.message:'Código de recuperação inválido.');}}
  const back=(title:string,subtitle?:string)=><div className={styles.pageHeading}><Button variant="ghost" className={styles.back} onClick={()=>go('camp')} aria-label="Voltar ao ludus"><ArrowLeft size={20}/></Button><div>{subtitle&&<span>{subtitle}</span>}<h1>{title}</h1></div></div>;
- const nav=[{id:'camp' as const,label:'Ludus',Icon:Home},{id:'map' as const,label:'Arenas',Icon:Map},{id:'gear' as const,label:'Equipar',Icon:Shield},{id:'shop' as const,label:'Ferreiro',Icon:ShoppingBag},{id:'train' as const,label:'Treinar',Icon:Flame},{id:'cultivation' as const,label:'Cultivo',Icon:Compass},{id:'beasts' as const,label:'Feras',Icon:PawPrint}];
- return <main className={styles.app} data-version={ArenaExpansion.version} data-expansion-stage="3" data-screen={screen}>
- <Helmet><title>ARENA — Filhos da Areia · Feras Espirituais 5.0</title><meta name="description" content="Jogo ilustrado para PC. Expansão 5.0, etapa 3: feras animadas, santuário, cuidados, treino e compêndio."/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="theme-color" content="#362318"/></Helmet>
- {battle?<ArenaBattle key={battle.key} save={battle.save} encounterId={battle.id} practice={battle.practice} onFinish={finish} onExit={()=>{setBattle(null);go('camp');}} onSound={value=>setSave(s=>({...s,sound:value}))}/>:
+ const nav=[{id:'camp' as const,label:'Ludus',Icon:Home},{id:'map' as const,label:'Arenas',Icon:Map},{id:'gear' as const,label:'Equipar',Icon:Shield},{id:'shop' as const,label:'Ferreiro',Icon:ShoppingBag},{id:'train' as const,label:'Treinar',Icon:Flame},{id:'cultivation' as const,label:'Cultivo',Icon:Compass},{id:'beasts' as const,label:'Feras',Icon:PawPrint},{id:'expeditions' as const,label:'Explorar',Icon:Compass}];
+ return <main className={styles.app} data-version={ArenaExpansion.version} data-expansion-stage="4" data-screen={screen}>
+ <Helmet><title>ARENA — Filhos da Areia · Terras Selvagens 5.0</title><meta name="description" content="Jogo ilustrado para PC. Expansão 5.0, etapa 4: habitats, combate contra feras, subjugação e captura."/><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/><meta name="theme-color" content="#362318"/></Helmet>
+ {wild?<ArenaWildBattle key={wild.ticket.id} root={wild.root} ticket={wild.ticket} onCheckpoint={wildCheckpoint} onFinish={finishWild} onBack={()=>{setWild(null);go('expeditions');}} onSound={value=>setSave(s=>({...s,sound:value}))}/>:battle?<ArenaBattle key={battle.key} save={battle.save} encounterId={battle.id} practice={battle.practice} onFinish={finish} onExit={()=>{setBattle(null);go('camp');}} onSound={value=>setSave(s=>({...s,sound:value}))}/>:
  <>
  {screen==='home'?<section className={styles.home}>
- <div className={styles.homeArt}><img src={Art.cover} alt="Dois campeões ilustrados diante do coliseu" fetchPriority="high"/><div className={styles.artShade}/><span className={styles.edition}>EXPANSÃO 5.0 · ETAPA 3/10</span><div className={styles.homeMotes} aria-hidden="true"/></div>
- <div className={styles.homeIntro}><div className={styles.flourish}><span/><Swords size={22}/><span/></div><p className={styles.eyebrow}>UMA NOVA LENDA AGUARDA</p><h1>ARENA</h1><h2>FILHOS DA AREIA</h2><p className={styles.homeLead}>A mesma arena. Novos companheiros.<br/>Conheça as feras de Velaria.</p>
+ <div className={styles.homeArt}><img src={Art.cover} alt="Dois campeões ilustrados diante do coliseu" fetchPriority="high"/><div className={styles.artShade}/><span className={styles.edition}>EXPANSÃO 5.0 · ETAPA 4/10</span><div className={styles.homeMotes} aria-hidden="true"/></div>
+ <div className={styles.homeIntro}><div className={styles.flourish}><span/><Swords size={22}/><span/></div><p className={styles.eyebrow}>UMA NOVA LENDA AGUARDA</p><h1>ARENA</h1><h2>FILHOS DA AREIA</h2><p className={styles.homeLead}>Além dos portões, um novo desafio.<br/>Conquiste o vínculo com as feras.</p>
  <Button className={styles.goldButton} onClick={()=>{go('camp');setSelected(next.id);}}><Swords size={19}/>{save.wins?'CONTINUAR JORNADA':'ENTRAR NO LUDUS'}<ArrowRight size={18}/></Button>
  <div className={styles.homeSecondary}><Button variant="outline" onClick={()=>fight(0,true)}><Play size={16}/> LUTA RÁPIDA</Button><Button variant="ghost" onClick={()=>go('create')}><User size={16}/> PERSONALIZAR</Button></div>
  <Button variant="ghost" className={styles.homeHelp} onClick={()=>go('help')}><BookOpen size={14}/> Controles, arquivo local e backup</Button>
@@ -131,12 +160,14 @@ export default function Index(){
  </section>:<>
  <header className={styles.top}><Button variant="ghost" className={styles.wordmark} onClick={()=>go('home')} aria-label="Tela inicial"><ArenaSigil size={46}/></Button><div className={styles.playerMeta}><strong>{save.name}</strong><small>NÍVEL {save.level} <span>·</span> {save.xp}/{save.level*90} XP</small><i className={styles.miniXp}><i style={{width:`${Math.min(100,save.xp/(save.level*90)*100)}%`}}/></i></div><div className={styles.gold}><Coins size={19}/>{save.gold.toLocaleString('pt-BR')}</div><Button variant="ghost" className={styles.settings} onClick={()=>go('help')} aria-label="Ajuda e configurações"><Settings size={19}/></Button></header>
  <div className={styles.content} key={screen}>
- {screen==='beasts'&&<ArenaBeasts root={{...v5Ref.current,beasts,cultivation}} onBack={()=>go('camp')} onCultivation={()=>go('cultivation')} onCommand={manageBeast} storageWarning={storageWarning}/>}
+ {screen==='expeditions'&&<ArenaExpeditions root={{...v5Ref.current,world,beasts,cultivation}} onBack={()=>go('camp')} onOpen={openExpedition} onResume={resumeExpedition} onFeras={()=>go('beasts')} onCultivation={()=>go('cultivation')} storageWarning={storageWarning}/>}
+ {screen==='beasts'&&<ArenaBeasts root={{...v5Ref.current,beasts,cultivation}} onBack={()=>go('camp')} onCultivation={()=>go('cultivation')} onCommand={manageBeast} onExplore={()=>go('expeditions')} storageWarning={storageWarning}/>}
  {screen==='cultivation'&&<ArenaCultivation save={save} model={cultivation} onAwaken={awakenCore} onBack={()=>go('camp')} onBackup={()=>go('help')} storageWarning={storageWarning} onCommand={cultivate} offlineReport={offlineReport} onDismissReport={()=>setOfflineReport(null)} clockWarning={clockWarning}/>}
  {screen==='camp'&&<section className={styles.camp}>
  <div className={styles.townMap}><img src={Art.town} alt="Velaria: coliseu, ferreiro, arsenal e pátio de treinamento"/><div className={styles.townTitle}><span>SEJA BEM-VINDO A</span><h2>Velaria</h2></div><Button className={`${styles.location} ${styles.locationArena}`} onClick={()=>go('map')}><Crown size={20}/><span>ARENAS</span></Button><Button className={`${styles.location} ${styles.locationForge}`} onClick={()=>go('shop')}><ShoppingBag size={18}/><span>FORJA</span></Button><Button className={`${styles.location} ${styles.locationGear}`} onClick={()=>go('gear')}><Shield size={18}/><span>ARSENAL</span></Button><Button className={`${styles.location} ${styles.locationTrain}`} onClick={()=>go('train')}><Target size={18}/><span>PÁTIO</span></Button><div className={styles.townHint}>Clique nos lugares para explorar</div></div>
  <Button className={styles.cultivationBanner} onClick={()=>go('cultivation')} aria-label="Abrir Santuário Interior"><span className={styles.cultivationBadge}><Compass size={30}/></span><span><small>EXPANSÃO 5.0 · O FLUXO INTERIOR</small><b>{CultivationEngine.isAwakened(cultivation)?cultivation.core.name:'Seu núcleo está pronto para despertar.'}</b><em>{CultivationEngine.isAwakened(cultivation)?`${cultivation.realm} ${'★'.repeat(cultivation.star)} · ${cultivation.essence.toLocaleString('pt-BR')} essência · ${CultivationFlow.rate(cultivation).toFixed(1)} por minuto`:'Visite o Santuário Interior. Seu progresso marcial será preservado.'}</em></span><ChevronRight size={24}/></Button>
  <Button className={`${styles.cultivationBanner} ${styles.beastBanner}`} onClick={()=>go('beasts')} aria-label="Abrir Santuário das Feras"><span className={styles.cultivationBadge}><PawPrint size={30}/></span><span><small>EXPANSÃO 5.0 · FERAS ESPIRITUAIS</small><b>{beasts.collection.length?`${beasts.collection.length} vínculo${beasts.collection.length===1?'':'s'} no seu santuário`:'Lyra espera você no santuário.'}</b><em>Oito espécies, linhagens próprias e uma nova companhia. Conheça o Compêndio de Lyra.</em></span><ChevronRight size={24}/></Button>
+ <Button className={`${styles.cultivationBanner} ${styles.wildBanner}`} onClick={()=>go('expeditions')} aria-label="Abrir Terras Selvagens"><span className={styles.cultivationBadge}><Compass size={30}/></span><span><small>EXPANSÃO 5.0 · TERRAS SELVAGENS</small><b>{WildWorld.state(v5Ref.current).pending?'Uma expedição aguarda seu retorno.':'Os rastros começam além de Velaria.'}</b><em>Quatro habitats, feras em combate real e pactos por subjugação.</em></span><ChevronRight size={24}/></Button>
  <div className={styles.campHero}><div className={styles.campArt}><ArenaPortrait save={save} arena={arena}/></div><div className={styles.campText}><span className={styles.eyebrow}>SEU LUDUS</span><h1>{save.cleared.length===12?'O invicto.':'Da areia à glória.'}</h1><p>{save.cleared.length===12?'As três coroas são suas. Revisite as arenas e domine outras armas.':'Equipe seu gladiador. Leia o rival. Faça cada golpe contar.'}</p><div className={styles.medals}><span><Award size={16}/>{save.wins} vitórias</span><span><Crown size={16}/>{save.cleared.filter(id=>D.encounters[id].boss).length}/3 coroas</span></div><Button variant="outline" className={styles.customize} onClick={()=>go('create')}>PERSONALIZAR <ChevronRight size={14}/></Button></div></div>
  <div className={styles.nextFight}><div><span className={styles.eyebrow}>{save.cleared.length===12?'REVISITAR O CAMPEÃO':'PRÓXIMO DESAFIO'}</span><h2>{next.name}<small>{next.epithet}</small></h2><p>{D.arenas[next.arena].name}</p></div><Button className={styles.goldButton} onClick={()=>fight(next.id)}><Swords size={20}/> LUTAR</Button></div>
  <div className={styles.campStats}>{[{Icon:Heart,name:'VIDA',value:stats.hp},{Icon:Swords,name:'ATAQUE',value:stats.power},{Icon:Shield,name:'DEFESA',value:stats.defense},{Icon:Zap,name:'VIGOR',value:stats.stamina}].map(({Icon,name,value})=><div key={name}><Icon size={17}/><strong>{value}</strong><span>{name}</span></div>)}</div>

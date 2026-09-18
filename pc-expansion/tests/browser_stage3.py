@@ -40,7 +40,7 @@ with sync_playwright() as pw:
  def top(p):p.locator('[class*="_content"]').evaluate('e=>e.scrollTop=0')
  def stable(b):return {k:b.get(k) for k in ['id','species','potential','bloodline','seed','mastery','evolution']}
  try:
-  p=boot();check('Build identifica etapa 3',p.locator('main[data-expansion-stage="3"]').count()==1)
+  p=boot();check('Build mantém recursos da etapa 3',int(p.locator('main[data-expansion-stage]').get_attribute('data-expansion-stage'))>=3)
   check('Capa ilustrada preservada',p.locator('img').first.evaluate('i=>i.complete&&i.naturalWidth>500'))
   click(p,'ENTRAR NO LUDUS');check('Cidade original preservada',p.locator('img[alt^="Velaria"]').evaluate('i=>i.complete&&i.naturalWidth>500'))
   beasts(p);check('Santuário aparece na navegação',p.get_by_role('heading',name='Santuário das Feras',exact=True).count()==1)

@@ -10,7 +10,7 @@ const adopt=(r=fresh(),species='pyrofang')=>S.command(r,{type:'adopt',species},T
 const frozen=x=>{Object.freeze(x);for(const y of Object.values(x))if(y&&typeof y==='object'&&!Object.isFrozen(y))frozen(y);return x;};
 function bad(fn,pattern){assert.throws(fn,pattern);}
 
-test('Identificação da etapa 3',()=>{assert.equal(X.stage,3);assert.equal(X.version,'5.0.0-alpha.3');});
+test('Identificação da versão inclui sistemas da etapa 3',()=>{assert.ok(X.stage>=3);assert.match(X.version,/^5\.0\.0-alpha\./);});
 test('Catálogo contém oito IDs únicos',()=>{assert.equal(SPEC.length,8);assert.equal(new Set(SPEC.map(x=>x.id)).size,8);assert.deepEqual(SPEC.map(x=>x.number),[1,2,3,4,5,6,7,8]);});
 test('Oito anatomias distintas para as oito espécies',()=>assert.equal(new Set(SPEC.map(x=>x.anatomy)).size,8));
 test('Cada espécie contém natureza, arquétipo, habitat, família e evolução',()=>{for(const s of SPEC){assert.ok(s.nature&&s.archetype&&s.aspect&&s.family&&s.habitat&&s.description&&s.observation);assert.ok(s.evolutions.length);}});
