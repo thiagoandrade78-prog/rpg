@@ -6,7 +6,7 @@ const make=(essence=0)=>{let m=C.awaken(C.create('stage2-fixed',1000),t0);m.core
 const test=(name,fn)=>{try{fn();results.push({name,passed:true});}catch(e){results.push({name,passed:false,error:e.stack});}};
 const command=(m,a,now=t0)=>F.command(m,a,now).model;
 const deepFreeze=o=>{Object.freeze(o);for(const v of Object.values(o))if(v&&typeof v==='object')deepFreeze(v);return o;};
-test('Versão alpha.2 e etapa 2 identificadas',()=>{assert.equal(X.stage,2);assert.equal(X.version,'5.0.0-alpha.2');});
+test('Versão preserva conteúdo da etapa 2',()=>{assert.ok(X.stage>=2);assert.match(X.version,/^5\.0\.0-alpha\./);});
 test('Stage1 inicializa fluxo sem essência retroativa',()=>{let m=C.awaken(C.create('old',1),2),r=F.settle(m,t0);assert.equal(r.model.essence,0);assert.equal(r.model.timestamps.offlineAccrualCursor,t0);assert.ok(r.receipt.initialized);});
 test('Inicialização idempotente preserva cursor',()=>{let m=make();assert.strictEqual(F.initialize(m,t0+60000).model,m);});
 test('Fluxo não altera núcleo ou meridianos',()=>{let m=make(),r=F.settle(m,t0+120000).model;assert.deepEqual(m.core,r.core);assert.deepEqual(m.meridians,r.meridians);});

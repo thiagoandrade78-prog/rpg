@@ -1,0 +1,15 @@
+.portrait{display:block;width:100%;height:100%;overflow:visible;isolation:isolate;}
+.actor{transform-box:view-box;}.torso{animation:breathe 3.4s ease-in-out infinite;transform-origin:0px -43px;}.head{animation:look 4.2s ease-in-out infinite;}.tail{animation:tail 3s ease-in-out infinite;}.crest{animation:flame 1.5s ease-in-out infinite;}.floating{animation:float 3.5s ease-in-out infinite;}.wingFront{animation:wing 2s ease-in-out infinite;}.wingBack{animation:wingBack 2s ease-in-out infinite;}.gills{animation:tail 2.4s ease-in-out infinite;}.whiskers{animation:look 3s ease-in-out infinite;transform-origin:119px -79px;}.serpent{animation:serpent 3.8s ease-in-out infinite;}.antlers{animation:look 4.2s ease-in-out infinite;transform-origin:60px -143px;}
+.moving .actor{animation:travel 6s ease-in-out infinite;}.moving .frontLeg{animation:step .68s ease-in-out infinite;}.moving .rearLeg{animation:step .68s ease-in-out infinite reverse;}.moving .torso{animation:breathe .68s ease-in-out infinite;}.moving .wingFront,.moving .wingBack{animation-duration:.8s;}.moving .tail{animation-duration:1s;}.silhouette{filter:brightness(.35) saturate(.12);opacity:.65;}
+.still *{animation:none!important;}
+@keyframes breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.025) translateY(-1px)}}
+@keyframes look{0%,100%{transform:rotate(0)}45%{transform:rotate(-3deg)}70%{transform:rotate(1.5deg)}}
+@keyframes tail{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(6deg)}}
+@keyframes flame{0%,100%{transform:scale(1)}50%{transform:scale(.93,1.1)}}
+@keyframes float{0%,100%{transform:translateY(2px)}50%{transform:translateY(-6px)}}
+@keyframes wing{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(13deg)}}
+@keyframes wingBack{0%,100%{transform:rotate(6deg)}50%{transform:rotate(-9deg)}}
+@keyframes serpent{0%,100%{transform:skewX(-2deg)}50%{transform:skewX(2deg)}}
+@keyframes step{0%,100%{transform:rotate(-11deg)}50%{transform:rotate(11deg)}}
+@keyframes travel{0%,100%{transform:translate(139px,178px) scale(.84)}50%{transform:translate(168px,178px) scale(.84)}}
+@media(prefers-reduced-motion:reduce){.portrait *{animation:none!important;}}

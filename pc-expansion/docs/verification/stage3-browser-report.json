@@ -1,0 +1,403 @@
+{
+  "mode": "HTML autocontido real carregado em blocos em about:blank; rede bloqueada; localStorage/Date.now controlados. Navegação file:// bloqueada pelo ambiente. Sem teste em Windows físico.",
+  "passed": 77,
+  "failed": 0,
+  "errors": [],
+  "externalRequests": [],
+  "tests": [
+    {
+      "name": "Build identifica etapa 3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Capa ilustrada preservada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cidade original preservada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Santuário aparece na navegação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Três candidatas desenhadas em SVG",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Dormência bloqueia acolhimento",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Despertar não altera personagem",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Núcleo do personagem não é sorteado novamente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Acolhimento liberado após despertar",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelar não concede fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Uma única fera acolhida",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Linhagem soma 100%",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Afinidade inicial 10 e domínio zero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem segunda oferta de acolhimento",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Fera é companheira de pátio, não assimilada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cancelar cuidado não cobra ouro",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cuidado debita ouro e aumenta afinidade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Cooldown bloqueia repetição",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Nome Unicode salvo sem perder genética",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recolher mantém coleção",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Selecionar companheiro não altera assimilação",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Treino custa 28 essência, sem gasto de ouro",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Uma sessão persistida, sem XP antecipado",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Coleta antes do prazo bloqueada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Segundo treino bloqueado",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Prazo libera conclusão",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "XP real sobe nível e afinidade",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Recompensa não pode ser coletada novamente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Nível da fera não sobe domínio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Oito registros no bestiário",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Silhueta de espécie não estudada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 01 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 01: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 02 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 02: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 03 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 03: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 04 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 04: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 05 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 05: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 06 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 06: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 07 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 07: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Registro 08 estudado sem conceder fera",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie 08: contornos desenhados",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Oito anatomias diferentes no renderer",
+      "passed": true,
+      "detail": [
+        "wolf",
+        "raptor",
+        "tortoise",
+        "salamander",
+        "stag",
+        "lynx",
+        "lion",
+        "wyrm"
+      ]
+    },
+    {
+      "name": "Pesquisa encontra Stormhawk",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pesquisa vazia informa corretamente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Filtro acolhidos só mostra espécie própria",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Filtro estudados mostra oito consultadas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Animação altera pixels entre frames",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Movimento não depende de ataques ou cliques repetidos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Efeitos reduzidos suspendem animações",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Exportação inclui coleção e registros novos",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup preserva companhia e semente",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Seis ações originais de combate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Teclado causa dano com arma articulada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Pausa preservada",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Combate não apaga feras ou bestiário",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reabrir backup mantém fera nível 2 e registros",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Importação automática de v3 mantém progresso",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Espécie futura preservada sem travar a ficha",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Quota indisponível mostra aviso e preserva sessão",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Backup recupera ação retida em memória",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Conflito de outra aba bloqueia gasto",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1366x768: Minhas feras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1366x768: Compêndio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1024x768: Minhas feras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 1024x768: Compêndio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 390x844: Minhas feras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 390x844: Compêndio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 844x390: Minhas feras",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Layout 844x390: Compêndio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Sem erros JavaScript",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "Zero solicitações externas",
+      "passed": true,
+      "detail": []
+    }
+  ]
+}

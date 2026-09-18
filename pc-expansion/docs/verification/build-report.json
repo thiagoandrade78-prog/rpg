@@ -1,10 +1,10 @@
 {
-  "title": "ARENA — Filhos da Areia · O Fluxo Interior",
+  "title": "ARENA — Filhos da Areia · Feras Espirituais",
   "sourceProject": "99acc7d3-ea06-4526-be68-86475e56cd5b",
   "sourceVersion": 1789690036364,
-  "edition": "Illustrated 4.0 + Expansion 5.0 stage 2",
-  "expansionVersion": "5.0.0-alpha.2",
-  "expansionStage": 2,
+  "edition": "Illustrated 4.0 + Expansion 5.0 stage 3",
+  "expansionVersion": "5.0.0-alpha.3",
+  "expansionStage": 3,
   "assets": [
     {
       "file": "a7c9cb85-cad4-4903-bf03-9dcf780ee7fb.png",
@@ -52,10 +52,10 @@
       "sha256": "07e7e9fe20302ef8547d6dae9ca81bfa1d5999319f2505468903a36cbfb83b2d"
     }
   ],
-  "htmlBytes": 21624988,
-  "htmlSha256": "34cb750382877b3d2c2f362895a315e5564e4d968b6ea62742fd94e7918c0803",
-  "jsBytes": 19252154,
-  "cssBytes": 104550,
+  "htmlBytes": 21703491,
+  "htmlSha256": "62e17955857338853f398823506764db61839ac8ea683705fc13a52a6d1edd74",
+  "jsBytes": 19304660,
+  "cssBytes": 130546,
   "networkRequired": false,
   "fontsBundled": false
 }

@@ -1,0 +1,258 @@
+{
+  "passed": 63,
+  "failed": 0,
+  "tests": [
+    {
+      "name": "Identificação da etapa 3",
+      "passed": true
+    },
+    {
+      "name": "Catálogo contém oito IDs únicos",
+      "passed": true
+    },
+    {
+      "name": "Oito anatomias distintas para as oito espécies",
+      "passed": true
+    },
+    {
+      "name": "Cada espécie contém natureza, arquétipo, habitat, família e evolução",
+      "passed": true
+    },
+    {
+      "name": "Cada espécie possui passiva, duas técnicas e suprema próprias",
+      "passed": true
+    },
+    {
+      "name": "Três candidatas iniciais, sem lendas gratuitas",
+      "passed": true
+    },
+    {
+      "name": "Espécie desconhecida na geração é rejeitada",
+      "passed": true
+    },
+    {
+      "name": "Geração é determinística, não depende do relógio",
+      "passed": true
+    },
+    {
+      "name": "Seeds e espécies produzem identidades distintas",
+      "passed": true
+    },
+    {
+      "name": "500 espécimes mantêm limites e linhagem de 100%",
+      "passed": true
+    },
+    {
+      "name": "Prévia corresponde exatamente ao indivíduo acolhido",
+      "passed": true
+    },
+    {
+      "name": "Renomear gladiador não sorteia candidatos novamente",
+      "passed": true
+    },
+    {
+      "name": "Dormência impede acolhimento",
+      "passed": true
+    },
+    {
+      "name": "Acolhimento adiciona um indivíduo e registra espécie",
+      "passed": true
+    },
+    {
+      "name": "Acolhimento é grátis e preserva combate/cultivo",
+      "passed": true
+    },
+    {
+      "name": "Segundo acolhimento é rejeitado sem duplicar fera",
+      "passed": true
+    },
+    {
+      "name": "Candidata não inicial é rejeitada no domínio",
+      "passed": true
+    },
+    {
+      "name": "Flag de acolhimento continua bloqueada em coleção vazia",
+      "passed": true
+    },
+    {
+      "name": "Coleção legada não recebe nova fera inicial",
+      "passed": true
+    },
+    {
+      "name": "Estudo é gratuito e não captura animais",
+      "passed": true
+    },
+    {
+      "name": "Estudar repetidamente não duplica registro ou altera save",
+      "passed": true
+    },
+    {
+      "name": "Estudo funciona antes do despertar sem conceder bônus",
+      "passed": true
+    },
+    {
+      "name": "Filtragem desconhecida não altera catálogo",
+      "passed": true
+    },
+    {
+      "name": "Comando desconhecido é rejeitado",
+      "passed": true
+    },
+    {
+      "name": "Comandos exigem relógio finito e inteiro",
+      "passed": true
+    },
+    {
+      "name": "Companheiro só pode apontar para fera própria",
+      "passed": true
+    },
+    {
+      "name": "Selecionar/recolher companheiro não muda atributos ou assimilação",
+      "passed": true
+    },
+    {
+      "name": "Renomear preserva Unicode e toda identidade genética",
+      "passed": true
+    },
+    {
+      "name": "Nome vazio é rejeitado e nome longo é limitado",
+      "passed": true
+    },
+    {
+      "name": "Cuidado debita 15 de ouro e adiciona seis de afinidade",
+      "passed": true
+    },
+    {
+      "name": "Cuidado sem ouro falha sem mutar a raiz",
+      "passed": true
+    },
+    {
+      "name": "Cooldown impede cliques repetidos e persiste no backup",
+      "passed": true
+    },
+    {
+      "name": "Cuidado não ultrapassa 100 e não cobra no máximo",
+      "passed": true
+    },
+    {
+      "name": "Relógio anterior ao acolhimento impede cuidado",
+      "passed": true
+    },
+    {
+      "name": "Treino debita a essência sem alterar ouro",
+      "passed": true
+    },
+    {
+      "name": "Treino sem essência falha atomicamente",
+      "passed": true
+    },
+    {
+      "name": "Treino exige núcleo desperto",
+      "passed": true
+    },
+    {
+      "name": "Somente uma sessão de treino pode existir",
+      "passed": true
+    },
+    {
+      "name": "Treino não pode ser coletado antes do prazo",
+      "passed": true
+    },
+    {
+      "name": "Concluir treino sobe de nível e preserva potencial/linhagem",
+      "passed": true
+    },
+    {
+      "name": "Coleta repetida é rejeitada sem recompensa dupla",
+      "passed": true
+    },
+    {
+      "name": "Fechar e importar não reinicia nem perde treino",
+      "passed": true
+    },
+    {
+      "name": "Treino do indivíduo A não é recebido por B",
+      "passed": true
+    },
+    {
+      "name": "Nível máximo não consome essência",
+      "passed": true
+    },
+    {
+      "name": "XP excedente é mantido e cálculo de níveis funciona",
+      "passed": true
+    },
+    {
+      "name": "Ganhos de XP têm teto e não diminuem nível legado",
+      "passed": true
+    },
+    {
+      "name": "Operações funcionam sobre entrada congelada (imutabilidade)",
+      "passed": true
+    },
+    {
+      "name": "Validação elimina duplicados após normalização do ID",
+      "passed": true
+    },
+    {
+      "name": "Espécies futuras são preservadas para evitar perda de progresso",
+      "passed": true
+    },
+    {
+      "name": "Linhagem inconsistente é normalizada para 100%",
+      "passed": true
+    },
+    {
+      "name": "Valores não finitos, negativos e nomes inválidos são saneados",
+      "passed": true
+    },
+    {
+      "name": "Companheiro e treino fantasmas são removidos",
+      "passed": true
+    },
+    {
+      "name": "Treino inválido não gera recompensa",
+      "passed": true
+    },
+    {
+      "name": "Validação de estágio 2 permanece estável quando não há santuário",
+      "passed": true
+    },
+    {
+      "name": "ARENA5 preserva todos os campos novos, inclusive cooldowns",
+      "passed": true
+    },
+    {
+      "name": "Migração ARENA3 continua funcionando sem perda",
+      "passed": true
+    },
+    {
+      "name": "Checkpoint 3 preserva bytes v5 uma única vez",
+      "passed": true
+    },
+    {
+      "name": "Quota cheia mantém coleção válida na memória",
+      "passed": true
+    },
+    {
+      "name": "Merge do combate não apaga coleção, santuário ou treino",
+      "passed": true
+    },
+    {
+      "name": "Acolhimento não aumenta dano, vida ou vigor do gladiador",
+      "passed": true
+    },
+    {
+      "name": "Fluxo de cultivo não incorpora bônus de feras antecipadamente",
+      "passed": true
+    },
+    {
+      "name": "Todas as artes originais e arquivos de combate continuam intactos",
+      "passed": true
+    },
+    {
+      "name": "Build continua único HTML sem módulos/fonte externa",
+      "passed": true
+    }
+  ]
+}

@@ -13,6 +13,12 @@ def check(n,ok,detail=None):
  results.append({'name':n,'passed':bool(ok),'detail':detail});print(n,bool(ok),flush=True)
  if not ok:raise AssertionError(n+': '+str(detail))
 SETUP="""(a)=>{let d=a.store;window.__testStore=d;window.__shift=0;Date.now=()=>a.now+window.__shift;Object.defineProperty(window,'localStorage',{configurable:true,value:{getItem:k=>d[k]??null,setItem:(k,v)=>{if(window.__quota)throw Error('quota');d[k]=String(v)},removeItem:k=>delete d[k],clear:()=>{for(let k in d)delete d[k]}}});}"""
+
+def inject(p):
+ p.evaluate("window.__arenaHtml=''")
+ for i in range(0,len(HTML),65536):p.evaluate('(s)=>{window.__arenaHtml+=s}',HTML[i:i+65536])
+ p.evaluate('() => {document.open();document.write(window.__arenaHtml);document.close();delete window.__arenaHtml;}')
+
 with sync_playwright() as pw:
  browser=pw.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage'])
  ctx=browser.new_context(viewport={'width':1440,'height':1040},accept_downloads=True);ctx.set_offline(True);ctx.route('**/*',lambda r:r.abort())
@@ -20,7 +26,7 @@ with sync_playwright() as pw:
   p=ctx.new_page()
   if size:p.set_viewport_size(size)
   p.on('pageerror',lambda e:errors.append(str(e)));p.on('request',lambda r:requests.append(r.url) if r.url.startswith(('http:','https:')) else None)
-  p.evaluate(SETUP,{'store':store or {},'now':NOW});p.set_content(HTML,wait_until='load');p.set_default_timeout(7000);p.wait_for_timeout(400);return p
+  p.evaluate(SETUP,{'store':store or {},'now':NOW});inject(p);p.set_default_timeout(7000);p.wait_for_timeout(400);return p
  def game(p):return p.evaluate("JSON.parse(localStorage.getItem('arena-save-v5'))")
  def jump(p,n):p.evaluate('(n)=>window.__shift+=n',n);p.wait_for_timeout(1250)
  def click(p,n):p.get_by_role('button',name=n,exact=True).click()
@@ -28,7 +34,7 @@ with sync_playwright() as pw:
  def cult(p):click(p,'Cultivo')
  def confirm(p):click(p,'CONFIRMAR INVESTIMENTO')
  try:
-  p=boot();check('Boot da etapa 2',p.locator('main[data-expansion-stage="2"]').count()==1)
+  p=boot();check('Boot da etapa 2',p.locator('main[data-expansion-stage="3"]').count()==1)
   check('Capa ilustrada original carregada',p.locator('img').first.evaluate('i=>i.complete&&i.naturalWidth>500'))
   click(p,'ENTRAR NO LUDUS');check('Cidade e atalhos preservados',p.get_by_role('button',name='FORJA',exact=True).count()==1)
   cult(p);tab(p,'Meditar');check('Dormência bloqueia meditação',p.get_by_role('button',name='MEDITAR · 30 SEGUNDOS',exact=True).count()==0)
@@ -63,7 +69,7 @@ with sync_playwright() as pw:
   click(p,'MEDITAR · 30 SEGUNDOS');jump(p,6000)
   if p.get_by_role('button',name='Fechar aviso',exact=True).count():click(p,'Fechar aviso')
   p.locator('[class*="_content"]').evaluate('(e)=>e.scrollTop=0');p.screenshot(path=str(O/'stage2-meditation.png'))
-  tab(p,'Jornada');check('Roteiro mantém 10 etapas e sinaliza duas concluídas',p.get_by_role('tabpanel').locator('article').count()==10 and 'etapas 1 e 2' in p.get_by_role('tabpanel').inner_text())
+  tab(p,'Jornada');check('Roteiro mantém 10 etapas e sinaliza duas concluídas',p.get_by_role('tabpanel').locator('article').count()==10 and 'etapas 1, 2 e 3' in p.get_by_role('tabpanel').inner_text())
   click(p,'Voltar ao ludus');click(p,'FORJA');p.locator('article').filter(has_text='Dente de chacal').first.get_by_role('button',name=re.compile('COMPRAR')).click()
   check('Compra original preserva a sessão de cultivo',game(p)['character']['equipped']['weapon']=='dagger-1' and game(p)['cultivation']['flow']['meditation'] is not None)
   click(p,'Treinar');click(p,'Melhorar Força');check('Treino marcial preserva reino',game(p)['cultivation']['realm']=='Condensado')

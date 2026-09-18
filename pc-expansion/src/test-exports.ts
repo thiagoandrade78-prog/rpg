@@ -10,3 +10,6 @@ export {ExpansionRoadmap as Roadmap} from './helpers/ExpansionRoadmap';
 export {ArenaExpansion as Expansion} from './helpers/ArenaExpansion';
 
 export {CultivationFlow as Flow} from './helpers/CultivationFlow';
+
+export {BeastSpecies as Species} from './helpers/BeastSpecies';
+export {BeastSanctuary as Sanctuary} from './helpers/BeastSanctuary';

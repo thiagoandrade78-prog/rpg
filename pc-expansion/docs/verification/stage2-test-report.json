@@ -3,7 +3,7 @@
   "failed": 0,
   "tests": [
     {
-      "name": "Versão alpha.2 e etapa 2 identificadas",
+      "name": "Versão preserva conteúdo da etapa 2",
       "passed": true
     },
     {

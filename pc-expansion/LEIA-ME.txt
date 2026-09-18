@@ -1,71 +1,45 @@
 ARENA — FILHOS DA AREIA
-EXPANSÃO 5.0 · ETAPA 2/10 — O FLUXO INTERIOR
+EXPANSÃO 5.0 — ETAPA 3/10: FERAS ESPIRITUAIS
 
-JOGAR NO PC
-1. Guarde um backup ARENA5 na versão anterior antes de trocar de arquivo.
-2. Abra ARENA_PC_EXPANSAO_02_FLUXO_INTERIOR.html no seu navegador.
-3. No jogo: Entrar no Ludus > Cultivo > Meditar.
-4. Se o gladiador antigo não aparecer, abra Ajuda e configurações e importe
-   o código ARENA5/ARENA3 ou o JSON exportado. Confirme a importação.
+COMO ABRIR NO PC
+Salve ARENA_PC_EXPANSAO_03_FERAS_ESPIRITUAIS.html e abra no navegador pelo computador.
+O código e as imagens estão incorporados; não é necessário servidor ou instalação.
+Mantenha o arquivo numa pasta fixa, fora da prévia temporária do chat, para facilitar o acesso ao mesmo armazenamento.
 
-Não precisa instalar Node, usar servidor ou carregar dependências externas.
-O HTML inclui as nove ilustrações e o motor original da Edição Ilustrada.
-O progresso é salvo no navegador. O armazenamento pode variar por arquivo,
-perfil e permissões; a importação de backup é a transferência segura.
+ANTES DE ATUALIZAR
+Na Etapa 2, entre em Ajuda e configurações > Proteja seu progresso > COPIAR CÓDIGO ou EXPORTAR.
+Na Etapa 3, importe o código ARENA5 completo (ou JSON de backup) na mesma seção.
+Um novo caminho de arquivo, navegador ou perfil pode não compartilhar o save do anterior. Não existe sincronização automática.
+Não use o HTML antigo para continuar depois de migrar os dados: ele não conhece os novos campos de santuário.
 
-NOVIDADES DA ETAPA 2
-- Fluxo passivo de essência após o despertar.
-- Meditação em sessões de 30 segundos a seis vezes a taxa passiva.
-- Interrupção da sessão preserva tudo que já foi produzido.
-- Doze meridianos: abrir e refinar, com custos e confirmação.
-- Cinco estrelas em cada um dos sete reinos; custo crescente.
-- Ruptura garantida quando essência e requisitos de canais estão completos.
-- Cultivo offline de até 12 horas por retorno, registrado por timestamps.
-- Recibo do tempo e essência creditados; não há botão de coleta duplicável.
-- O tempo anterior à ativação da Etapa 2 não gera essência retroativa.
-- Cópia local do save anterior em arena-save-v5-before-stage-2.
+COMEÇAR A ETAPA 3
+Entrar no Ludus > Feras.
+Se o núcleo ainda não estiver desperto, visite Cultivo e confirme o despertar.
+Lyra oferece UM acolhimento gratuito entre Pyrofang, Stoneback e Thornstag.
+Observe potencial, temperamento e linhagem e confirme a escolha. Não é possível receber uma segunda oferta na mesma jornada.
+Compêndio > selecione um registro > ESTUDAR REGISTRO. Estudar revela a ficha; não captura a criatura.
 
-BALANCEAMENTO INICIAL
-Taxa passiva base: 12 essência/minuto, antes dos bônus aditivos.
-Qualidade: +7% por grau acima de Comum.
-Meridiano aberto: +4%. Refinado: mais +6%.
-Reino: +12% por reino acima de Desperto. Estrela: +2% por estrela acima de 1.
-Meditar multiplica a taxa resultante por 6 durante 30 segundos.
-Os bônus são apenas de cultivo nesta etapa. O combate não foi rebalanceado.
-Valores desta primeira versão podem mudar após testes de balanceamento.
+CUIDADOS E TREINO
+CUIDAR: 15 de ouro; +6 afinidade; intervalo de 60 s.
+TREINAR: 20 + 8 × nível em essência; 30 s; concluir concede +60 XP e +3 afinidade.
+O treino fica salvo. A recompensa é recebida uma única vez em CONCLUIR TREINO.
+OBSERVAR/MOVIMENTAR: animações de exibição no santuário.
 
-CONTRATOS DE TEMPO
-Toda alteração de taxa contabiliza primeiro o tempo na taxa anterior.
-Uma meditação encerrará ao final dos 30 segundos mesmo com o arquivo fechado.
-Depois desse limite, o período restante gera somente essência passiva.
-O retorno considera no máximo as últimas 12 horas; horas excedentes não ficam
-pendentes para outra coleta. Frações de essência são preservadas entre ticks.
-Se o relógio retroceder, o jogo suspende crédito até alcançar o último cursor.
-Não há servidor verificando o relógio: editar a hora ou restaurar um backup
-antigo pode alterar o resultado. Não é um sistema antitrapaça competitivo.
+CONTROLES ORIGINAIS DA ARENA
+A/D ou setas: andar. J: leve. K: pesado. L ou Shift: escudo.
+Espaço: esquiva. W/seta para cima: salto. E: fúria. Esc: pausa.
 
-TECLADO (COMBATE ORIGINAL)
-A/D ou setas: mover. J: ataque leve/combo. K: pesado. L/Shift: escudo.
-Espaço: esquiva. W/seta acima: salto. E: fúria. Esc: pausar/continuar.
-O treino livre não concede recompensas nem muda o progresso marcial.
+ESCOPO
+O jogo ilustrado, campanha, equipamentos, combate, cultivo e santuário estão nesta cópia.
+Captura selvagem, assimilação, habilidades da fera na arena, metamorfoses e evolução são etapas futuras.
+Nomes de poderes/evoluções no Compêndio são registros de espécie, não funções de combate já ativadas.
+A versão publicada no Floot não foi substituída por este HTML.
 
-LIMITES DESTA ENTREGA
-Cultivo e progressão espiritual estão ativos. PoketPets, captura, assimilação
-jogável e metamorfoses ainda não foram implementados nesta linha ilustrada.
-O estado dos modelos futuros permanece preservado nos backups v5.
-O domínio publicado do Floot e a versão anterior não são substituídos.
+PROTEJA SEU SAVE
+Exporte regularmente. A atualização faz uma cópia local anterior à Etapa 3.
+Se o armazenamento falhar, mantenha a aba aberta e exporte seu backup.
+Abra apenas uma aba do jogo por vez para evitar conflitos.
 
 TESTES
-Veja VALIDACAO.json no pacote do jogo e docs/verification no código-fonte.
-Testes de navegador usam o HTML real em Chromium com rede bloqueada.
-O ambiente não permite navegar por file://. Armazenamento e relógio foram
-controlados nos testes de interface. Não houve teste em um Windows físico.
-
-PARA DESENVOLVER (PACOTE DE CÓDIGO-FONTE)
-npm ci
-npm run typecheck
-npm run build
-npm test
-O build sai em dist/ARENA_FILHOS_DA_AREIA_PC.html.
-O script de testes de interface usa Python Playwright e Chromium.
-Não distribua node_modules junto do HTML; não é necessário para jogar.
+193 testes de lógica, typecheck e 123 verificações de interface (77 novas + 46 de regressão), em Chromium, sem chamadas externas.
+O ambiente não permite abrir file://; os testes carregaram o conteúdo real do HTML em about:blank. Não foi um teste em Windows físico.

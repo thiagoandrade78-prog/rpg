@@ -12,6 +12,8 @@ function bytesEncode(value:string){return btoa(Array.from(new TextEncoder().enco
 function bytesDecode(value:string){const raw=atob(value);return new TextDecoder().decode(Uint8Array.from(raw,c=>c.charCodeAt(0)));}
 export class ArenaSaveV5 {
  static readonly KEY='arena-save-v5';static readonly LEGACY_KEY='arena-save-v3';static readonly RECOVERY_KEY='arena-save-v5-recovery';
+ static readonly STAGE3_BACKUP_KEY='arena-save-v5-before-stage-3';
+ static checkpointStage3(){const raw=localStorage.getItem(this.KEY);if(raw&&!localStorage.getItem(this.STAGE3_BACKUP_KEY))localStorage.setItem(this.STAGE3_BACKUP_KEY,raw);}
  static readonly STAGE2_BACKUP_KEY='arena-save-v5-before-stage-2';
  static checkpointStage2(){const raw=localStorage.getItem(this.KEY);if(raw&&!localStorage.getItem(this.STAGE2_BACKUP_KEY))localStorage.setItem(this.STAGE2_BACKUP_KEY,raw);}
  static readonly STAGE1_BACKUP_KEY='arena-save-v5-before-stage-1';
@@ -52,7 +54,7 @@ export class ArenaSaveV5 {
   if(current){
    try{
     const save=this.validate(JSON.parse(current));
-    try{this.checkpointStage1();this.checkpointStage2();}catch{warn();}
+    try{this.checkpointStage1();this.checkpointStage2();this.checkpointStage3();}catch{warn();}
     return {save,warning,migrated:false};
    }catch{try{if(!localStorage.getItem(this.RECOVERY_KEY))localStorage.setItem(this.RECOVERY_KEY,current);}catch{warn();}}
   }
